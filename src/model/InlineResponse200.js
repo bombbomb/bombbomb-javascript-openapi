@@ -25,54 +25,70 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/InlineResponse200Items'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./InlineResponse200Items'));
   } else {
     // Browser globals (root is window)
     if (!root.BombbombNodejsOpenapi) {
       root.BombbombNodejsOpenapi = {};
     }
-    root.BombbombNodejsOpenapi.ModelString = factory(root.BombbombNodejsOpenapi.ApiClient);
+    root.BombbombNodejsOpenapi.InlineResponse200 = factory(root.BombbombNodejsOpenapi.ApiClient, root.BombbombNodejsOpenapi.InlineResponse200Items);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, InlineResponse200Items) {
   'use strict';
 
 
 
 
   /**
-   * The ModelString model module.
-   * @module model/ModelString
+   * The InlineResponse200 model module.
+   * @module model/InlineResponse200
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>ModelString</code>.
-   * @alias module:model/ModelString
+   * Constructs a new <code>InlineResponse200</code>.
+   * @alias module:model/InlineResponse200
    * @class
    */
   var exports = function() {
     var _this = this;
 
+
+
   };
 
   /**
-   * Constructs a <code>ModelString</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>InlineResponse200</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ModelString} obj Optional instance to populate.
-   * @return {module:model/ModelString} The populated <code>ModelString</code> instance.
+   * @param {module:model/InlineResponse200} obj Optional instance to populate.
+   * @return {module:model/InlineResponse200} The populated <code>InlineResponse200</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('totalPages')) {
+        obj['totalPages'] = ApiClient.convertToType(data['totalPages'], 'Integer');
+      }
+      if (data.hasOwnProperty('items')) {
+        obj['items'] = ApiClient.convertToType(data['items'], [InlineResponse200Items]);
+      }
     }
     return obj;
   }
 
+  /**
+   * @member {Integer} totalPages
+   */
+  exports.prototype['totalPages'] = undefined;
+  /**
+   * @member {Array.<module:model/InlineResponse200Items>} items
+   */
+  exports.prototype['items'] = undefined;
 
 
 

@@ -1,6 +1,6 @@
 /**
  * BombBomb
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -25,12 +25,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/JerichoConfiguration', 'model/ModelString', 'model/Webhook', 'api/PromptsApi', 'api/TeamsApi', 'api/UtilitiesApi', 'api/WebhooksApi'], factory);
+    define(['ApiClient', 'model/BBWebHook', 'model/InlineResponse200', 'model/InlineResponse200Items', 'model/JerichoConfiguration', 'model/ModelString', 'model/OAuthClient', 'model/VideoEmailPrompt', 'api/PromptsApi', 'api/TeamsApi', 'api/UtilitiesApi', 'api/WebhooksApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/JerichoConfiguration'), require('./model/ModelString'), require('./model/Webhook'), require('./api/PromptsApi'), require('./api/TeamsApi'), require('./api/UtilitiesApi'), require('./api/WebhooksApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/BBWebHook'), require('./model/InlineResponse200'), require('./model/InlineResponse200Items'), require('./model/JerichoConfiguration'), require('./model/ModelString'), require('./model/OAuthClient'), require('./model/VideoEmailPrompt'), require('./api/PromptsApi'), require('./api/TeamsApi'), require('./api/UtilitiesApi'), require('./api/WebhooksApi'));
   }
-}(function(ApiClient, JerichoConfiguration, ModelString, Webhook, PromptsApi, TeamsApi, UtilitiesApi, WebhooksApi) {
+}(function(ApiClient, BBWebHook, InlineResponse200, InlineResponse200Items, JerichoConfiguration, ModelString, OAuthClient, VideoEmailPrompt, PromptsApi, TeamsApi, UtilitiesApi, WebhooksApi) {
   'use strict';
 
   /**
@@ -71,6 +71,21 @@
      */
     ApiClient: ApiClient,
     /**
+     * The BBWebHook model constructor.
+     * @property {module:model/BBWebHook}
+     */
+    BBWebHook: BBWebHook,
+    /**
+     * The InlineResponse200 model constructor.
+     * @property {module:model/InlineResponse200}
+     */
+    InlineResponse200: InlineResponse200,
+    /**
+     * The InlineResponse200Items model constructor.
+     * @property {module:model/InlineResponse200Items}
+     */
+    InlineResponse200Items: InlineResponse200Items,
+    /**
      * The JerichoConfiguration model constructor.
      * @property {module:model/JerichoConfiguration}
      */
@@ -81,10 +96,15 @@
      */
     ModelString: ModelString,
     /**
-     * The Webhook model constructor.
-     * @property {module:model/Webhook}
+     * The OAuthClient model constructor.
+     * @property {module:model/OAuthClient}
      */
-    Webhook: Webhook,
+    OAuthClient: OAuthClient,
+    /**
+     * The VideoEmailPrompt model constructor.
+     * @property {module:model/VideoEmailPrompt}
+     */
+    VideoEmailPrompt: VideoEmailPrompt,
     /**
      * The PromptsApi service constructor.
      * @property {module:api/PromptsApi}

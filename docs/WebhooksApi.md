@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="addWebHook"></a>
 # **addWebHook**
-> addWebHook(hookUrl)
+> BBWebHook addWebHook(hookUrl)
 
 Add Webhook
 
@@ -36,7 +36,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addWebHook(hookUrl, callback);
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**BBWebHook**](BBWebHook.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ null (empty response body)
 
 <a name="deleteWebHook"></a>
 # **deleteWebHook**
-> deleteWebHook(hookId)
+> &#39;String&#39; deleteWebHook(hookId)
 
 Deletes Webhook
 
@@ -87,7 +87,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.deleteWebHook(hookId, callback);
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**&#39;String&#39;**
 
 ### Authorization
 
@@ -114,7 +114,7 @@ null (empty response body)
 
 <a name="getWebHooks"></a>
 # **getWebHooks**
-> getWebHooks()
+> [BBWebHook] getWebHooks()
 
 Lists Webhooks
 
@@ -135,7 +135,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.getWebHooks(callback);
@@ -146,7 +146,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**[BBWebHook]**](BBWebHook.md)
 
 ### Authorization
 

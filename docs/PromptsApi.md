@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="createVideoEmailPrompt"></a>
 # **createVideoEmailPrompt**
-> createVideoEmailPrompt(prompt)
+> VideoEmailPrompt createVideoEmailPrompt(prompt)
 
 Prompts user to send a video
 
@@ -20,17 +20,22 @@ Sends the account holder an email prompting them to add a video to a scheduled o
 ### Example
 ```javascript
 var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
+var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new BombbombNodejsOpenapi.PromptsApi();
 
-var prompt = new BombbombNodejsOpenapi.JerichoConfiguration(); // JerichoConfiguration | The Video Email Prompt to be created
+var prompt = new BombbombNodejsOpenapi.VideoEmailPrompt(); // VideoEmailPrompt | The Video Email Prompt to be created
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.createVideoEmailPrompt(prompt, callback);
@@ -40,15 +45,15 @@ apiInstance.createVideoEmailPrompt(prompt, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **prompt** | [**JerichoConfiguration**](JerichoConfiguration.md)| The Video Email Prompt to be created | 
+ **prompt** | [**VideoEmailPrompt**](VideoEmailPrompt.md)| The Video Email Prompt to be created | 
 
 ### Return type
 
-null (empty response body)
+[**VideoEmailPrompt**](VideoEmailPrompt.md)
 
 ### Authorization
 
-No authorization required
+[BBOAuth2](../README.md#BBOAuth2)
 
 ### HTTP request headers
 
@@ -57,7 +62,7 @@ No authorization required
 
 <a name="getVideoEmailPrompt"></a>
 # **getVideoEmailPrompt**
-> getVideoEmailPrompt(id)
+> VideoEmailPrompt getVideoEmailPrompt(id)
 
 Gets a prompt
 
@@ -81,7 +86,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.getVideoEmailPrompt(id, callback);
@@ -95,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**VideoEmailPrompt**](VideoEmailPrompt.md)
 
 ### Authorization
 
@@ -108,7 +113,7 @@ null (empty response body)
 
 <a name="respondToVideoEmailPrompt"></a>
 # **respondToVideoEmailPrompt**
-> respondToVideoEmailPrompt(id, choice, opts)
+> VideoEmailPrompt respondToVideoEmailPrompt(id, choice, opts)
 
 Respond to a prompt
 
@@ -132,7 +137,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.respondToVideoEmailPrompt(id, choice, opts, callback);
@@ -148,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**VideoEmailPrompt**](VideoEmailPrompt.md)
 
 ### Authorization
 

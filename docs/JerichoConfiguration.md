@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **emailSubject** | **String** | Video Prompt: The subject line of the final sent email | [optional] 
 **emailBody** | **String** | Video Prompt: The HTML body of the final sent email. | [optional] 
 **sendWithoutVideo** | **Boolean** | Video Prompt: Whether to send the final email if no video was recorded. | [optional] 
+**status** | **String** | The state of the send. | [optional] 
 
 

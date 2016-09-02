@@ -1,6 +1,6 @@
 /**
  * BombBomb
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -25,18 +25,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/JerichoConfiguration'], factory);
+    define(['ApiClient', 'model/InlineResponse200', 'model/JerichoConfiguration'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/JerichoConfiguration'));
+    module.exports = factory(require('../ApiClient'), require('../model/InlineResponse200'), require('../model/JerichoConfiguration'));
   } else {
     // Browser globals (root is window)
     if (!root.BombbombNodejsOpenapi) {
       root.BombbombNodejsOpenapi = {};
     }
-    root.BombbombNodejsOpenapi.TeamsApi = factory(root.BombbombNodejsOpenapi.ApiClient, root.BombbombNodejsOpenapi.JerichoConfiguration);
+    root.BombbombNodejsOpenapi.TeamsApi = factory(root.BombbombNodejsOpenapi.ApiClient, root.BombbombNodejsOpenapi.InlineResponse200, root.BombbombNodejsOpenapi.JerichoConfiguration);
   }
-}(this, function(ApiClient, JerichoConfiguration) {
+}(this, function(ApiClient, InlineResponse200, JerichoConfiguration) {
   'use strict';
 
   /**
@@ -55,6 +55,155 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+    /**
+     * Callback function to receive the result of the cancelJerichoSend operation.
+     * @callback module:api/TeamsApi~cancelJerichoSendCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Cancel a Jericho Send
+     * Cancels a scheduled Jericho send from being sent.
+     * @param {String} jerichoId ID of the Jericho Job to cancel
+     * @param {module:api/TeamsApi~cancelJerichoSendCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.cancelJerichoSend = function(jerichoId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'jerichoId' is set
+      if (jerichoId == undefined || jerichoId == null) {
+        throw "Missing the required parameter 'jerichoId' when calling cancelJerichoSend";
+      }
+
+
+      var pathParams = {
+        'jerichoId': jerichoId
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['BBOAuth2'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/team/{teamId}/jericho/{jerichoId}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getClientGroupAssets operation.
+     * @callback module:api/TeamsApi~getClientGroupAssetsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/InlineResponse200} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Lists team assets
+     * Returns a collection of assets
+     * @param {module:model/String} assetType The type of assets.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.teamId The team containing the assets.
+     * @param {String} opts.autoTagName The auto tag name containing the assets.
+     * @param {String} opts.pageSize The number of items to retrieve in a single db query.
+     * @param {String} opts.page Zero-based index of the page of data to retrieve from the db.
+     * @param {String} opts.search Search words.
+     * @param {module:api/TeamsApi~getClientGroupAssetsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/InlineResponse200}
+     */
+    this.getClientGroupAssets = function(assetType, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'assetType' is set
+      if (assetType == undefined || assetType == null) {
+        throw "Missing the required parameter 'assetType' when calling getClientGroupAssets";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'assetType': assetType,
+        'teamId': opts['teamId'],
+        'autoTagName': opts['autoTagName'],
+        'pageSize': opts['pageSize'],
+        'page': opts['page'],
+        'search': opts['search']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['BBOAuth2'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = InlineResponse200;
+
+      return this.apiClient.callApi(
+        '/team/assets/', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getJerichoSends operation.
+     * @callback module:api/TeamsApi~getJerichoSendsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/JerichoConfiguration>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List Jericho Sends
+     * Lists Jericho sends, both pending and sent.
+     * @param {String} teamId The team whose Jericho sends you wish to see.
+     * @param {module:api/TeamsApi~getJerichoSendsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/JerichoConfiguration>}
+     */
+    this.getJerichoSends = function(teamId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'teamId' is set
+      if (teamId == undefined || teamId == null) {
+        throw "Missing the required parameter 'teamId' when calling getJerichoSends";
+      }
+
+
+      var pathParams = {
+        'teamId': teamId
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['BBOAuth2'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [JerichoConfiguration];
+
+      return this.apiClient.callApi(
+        '/team/{teamId}/jericho', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the queueJerichoSend operation.

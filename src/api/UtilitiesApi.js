@@ -1,6 +1,6 @@
 /**
  * BombBomb
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -25,18 +25,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/OAuthClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/OAuthClient'));
   } else {
     // Browser globals (root is window)
     if (!root.BombbombNodejsOpenapi) {
       root.BombbombNodejsOpenapi = {};
     }
-    root.BombbombNodejsOpenapi.UtilitiesApi = factory(root.BombbombNodejsOpenapi.ApiClient);
+    root.BombbombNodejsOpenapi.UtilitiesApi = factory(root.BombbombNodejsOpenapi.ApiClient, root.BombbombNodejsOpenapi.OAuthClient);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, OAuthClient) {
   'use strict';
 
   /**
@@ -60,7 +60,7 @@
      * Callback function to receive the result of the createOAuthClient operation.
      * @callback module:api/UtilitiesApi~createOAuthClientCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/OAuthClient} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -70,6 +70,7 @@
      * @param {String} name The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD
      * @param {String} redirectUri The URI to direct the client to after logging in.
      * @param {module:api/UtilitiesApi~createOAuthClientCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/OAuthClient}
      */
     this.createOAuthClient = function(name, redirectUri, callback) {
       var postBody = null;
@@ -99,7 +100,7 @@
       var authNames = ['BBOAuth2'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = OAuthClient;
 
       return this.apiClient.callApi(
         '/oauthclient', 'POST',
@@ -157,7 +158,7 @@
      * Callback function to receive the result of the getOAuthClients operation.
      * @callback module:api/UtilitiesApi~getOAuthClientsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Array.<module:model/OAuthClient>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -165,6 +166,7 @@
      * Lists OAuth Clients
      * Enumerates OAuth Clients managed by the user
      * @param {module:api/UtilitiesApi~getOAuthClientsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/OAuthClient>}
      */
     this.getOAuthClients = function(callback) {
       var postBody = null;
@@ -182,7 +184,7 @@
       var authNames = ['BBOAuth2'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = [OAuthClient];
 
       return this.apiClient.callApi(
         '/oauthclient', 'GET',

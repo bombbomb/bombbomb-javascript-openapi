@@ -1,6 +1,6 @@
 /**
  * BombBomb
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -25,18 +25,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/JerichoConfiguration'], factory);
+    define(['ApiClient', 'model/VideoEmailPrompt'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/JerichoConfiguration'));
+    module.exports = factory(require('../ApiClient'), require('../model/VideoEmailPrompt'));
   } else {
     // Browser globals (root is window)
     if (!root.BombbombNodejsOpenapi) {
       root.BombbombNodejsOpenapi = {};
     }
-    root.BombbombNodejsOpenapi.PromptsApi = factory(root.BombbombNodejsOpenapi.ApiClient, root.BombbombNodejsOpenapi.JerichoConfiguration);
+    root.BombbombNodejsOpenapi.PromptsApi = factory(root.BombbombNodejsOpenapi.ApiClient, root.BombbombNodejsOpenapi.VideoEmailPrompt);
   }
-}(this, function(ApiClient, JerichoConfiguration) {
+}(this, function(ApiClient, VideoEmailPrompt) {
   'use strict';
 
   /**
@@ -60,15 +60,16 @@
      * Callback function to receive the result of the createVideoEmailPrompt operation.
      * @callback module:api/PromptsApi~createVideoEmailPromptCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/VideoEmailPrompt} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Prompts user to send a video
      * Sends the account holder an email prompting them to add a video to a scheduled outgoing message. Recipients, content and timing is all preset for the user.
-     * @param {module:model/JerichoConfiguration} prompt The Video Email Prompt to be created
+     * @param {module:model/VideoEmailPrompt} prompt The Video Email Prompt to be created
      * @param {module:api/PromptsApi~createVideoEmailPromptCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/VideoEmailPrompt}
      */
     this.createVideoEmailPrompt = function(prompt, callback) {
       var postBody = prompt;
@@ -88,10 +89,10 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['BBOAuth2'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = VideoEmailPrompt;
 
       return this.apiClient.callApi(
         '/prompt', 'POST',
@@ -104,7 +105,7 @@
      * Callback function to receive the result of the getVideoEmailPrompt operation.
      * @callback module:api/PromptsApi~getVideoEmailPromptCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/VideoEmailPrompt} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -113,6 +114,7 @@
      * Gets a prompt
      * @param {String} id The Id of the prompt
      * @param {module:api/PromptsApi~getVideoEmailPromptCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/VideoEmailPrompt}
      */
     this.getVideoEmailPrompt = function(id, callback) {
       var postBody = null;
@@ -136,7 +138,7 @@
       var authNames = ['BBOAuth2'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = VideoEmailPrompt;
 
       return this.apiClient.callApi(
         '/prompt/{id}', 'GET',
@@ -149,7 +151,7 @@
      * Callback function to receive the result of the respondToVideoEmailPrompt operation.
      * @callback module:api/PromptsApi~respondToVideoEmailPromptCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/VideoEmailPrompt} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -157,10 +159,11 @@
      * Respond to a prompt
      * Respond to a prompt by either adding a video, sending without a video or cancelling the prompt.
      * @param {String} id The id of the prompt.
-     * @param {String} choice The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel
+     * @param {module:model/String} choice The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel
      * @param {Object} opts Optional parameters
      * @param {String} opts.videoId The id of the video.
      * @param {module:api/PromptsApi~respondToVideoEmailPromptCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/VideoEmailPrompt}
      */
     this.respondToVideoEmailPrompt = function(id, choice, opts, callback) {
       opts = opts || {};
@@ -192,7 +195,7 @@
       var authNames = [];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = VideoEmailPrompt;
 
       return this.apiClient.callApi(
         '/prompt/{id}/response', 'POST',

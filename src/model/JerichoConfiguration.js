@@ -1,6 +1,6 @@
 /**
  * BombBomb
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -67,6 +67,7 @@
 
 
 
+
   };
 
   /**
@@ -109,6 +110,9 @@
       }
       if (data.hasOwnProperty('sendWithoutVideo')) {
         obj['sendWithoutVideo'] = ApiClient.convertToType(data['sendWithoutVideo'], 'Boolean');
+      }
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
       }
     }
     return obj;
@@ -162,6 +166,11 @@
    * @member {Boolean} sendWithoutVideo
    */
   exports.prototype['sendWithoutVideo'] = undefined;
+  /**
+   * The state of the send.
+   * @member {String} status
+   */
+  exports.prototype['status'] = undefined;
 
 
 

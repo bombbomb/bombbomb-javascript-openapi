@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createOAuthClient"></a>
 # **createOAuthClient**
-> createOAuthClient(name, redirectUri)
+> OAuthClient createOAuthClient(name, redirectUri)
 
 Create an OAuth Client
 
@@ -38,7 +38,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.createOAuthClient(name, redirectUri, callback);
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**OAuthClient**](OAuthClient.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ null (empty response body)
 
 <a name="getOAuthClients"></a>
 # **getOAuthClients**
-> getOAuthClients()
+> [OAuthClient] getOAuthClients()
 
 Lists OAuth Clients
 
@@ -138,7 +138,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.getOAuthClients(callback);
@@ -149,7 +149,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**[OAuthClient]**](OAuthClient.md)
 
 ### Authorization
 

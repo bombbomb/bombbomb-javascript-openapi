@@ -34,7 +34,7 @@
     if (!root.BombbombNodejsOpenapi) {
       root.BombbombNodejsOpenapi = {};
     }
-    root.BombbombNodejsOpenapi.ModelString = factory(root.BombbombNodejsOpenapi.ApiClient);
+    root.BombbombNodejsOpenapi.InlineResponse200Items = factory(root.BombbombNodejsOpenapi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,36 +43,68 @@
 
 
   /**
-   * The ModelString model module.
-   * @module model/ModelString
+   * The InlineResponse200Items model module.
+   * @module model/InlineResponse200Items
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>ModelString</code>.
-   * @alias module:model/ModelString
+   * Constructs a new <code>InlineResponse200Items</code>.
+   * @alias module:model/InlineResponse200Items
    * @class
    */
   var exports = function() {
     var _this = this;
 
+
+
+
+
   };
 
   /**
-   * Constructs a <code>ModelString</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>InlineResponse200Items</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ModelString} obj Optional instance to populate.
-   * @return {module:model/ModelString} The populated <code>ModelString</code> instance.
+   * @param {module:model/InlineResponse200Items} obj Optional instance to populate.
+   * @return {module:model/InlineResponse200Items} The populated <code>InlineResponse200Items</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('userId')) {
+        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
+      }
+      if (data.hasOwnProperty('thumbUrl')) {
+        obj['thumbUrl'] = ApiClient.convertToType(data['thumbUrl'], 'String');
+      }
     }
     return obj;
   }
 
+  /**
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
+  /**
+   * @member {String} name
+   */
+  exports.prototype['name'] = undefined;
+  /**
+   * @member {String} userId
+   */
+  exports.prototype['userId'] = undefined;
+  /**
+   * @member {String} thumbUrl
+   */
+  exports.prototype['thumbUrl'] = undefined;
 
 
 

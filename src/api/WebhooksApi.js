@@ -1,6 +1,6 @@
 /**
  * BombBomb
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -25,18 +25,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/BBWebHook'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/BBWebHook'));
   } else {
     // Browser globals (root is window)
     if (!root.BombbombNodejsOpenapi) {
       root.BombbombNodejsOpenapi = {};
     }
-    root.BombbombNodejsOpenapi.WebhooksApi = factory(root.BombbombNodejsOpenapi.ApiClient);
+    root.BombbombNodejsOpenapi.WebhooksApi = factory(root.BombbombNodejsOpenapi.ApiClient, root.BombbombNodejsOpenapi.BBWebHook);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, BBWebHook) {
   'use strict';
 
   /**
@@ -60,7 +60,7 @@
      * Callback function to receive the result of the addWebHook operation.
      * @callback module:api/WebhooksApi~addWebHookCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/BBWebHook} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -69,6 +69,7 @@
      * Idempotently adds a Webhook url
      * @param {String} hookUrl The Url of your listener
      * @param {module:api/WebhooksApi~addWebHookCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/BBWebHook}
      */
     this.addWebHook = function(hookUrl, callback) {
       var postBody = null;
@@ -92,7 +93,7 @@
       var authNames = ['BBOAuth2'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = BBWebHook;
 
       return this.apiClient.callApi(
         '/webhook', 'POST',
@@ -105,7 +106,7 @@
      * Callback function to receive the result of the deleteWebHook operation.
      * @callback module:api/WebhooksApi~deleteWebHookCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -114,6 +115,7 @@
      * Deletes a Webhook
      * @param {String} hookId The id of the webhook to delete
      * @param {module:api/WebhooksApi~deleteWebHookCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.deleteWebHook = function(hookId, callback) {
       var postBody = null;
@@ -137,7 +139,7 @@
       var authNames = ['BBOAuth2'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/webhook/{hookId}', 'DELETE',
@@ -150,7 +152,7 @@
      * Callback function to receive the result of the getWebHooks operation.
      * @callback module:api/WebhooksApi~getWebHooksCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Array.<module:model/BBWebHook>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -158,6 +160,7 @@
      * Lists Webhooks
      * Lists all registered Webhooks
      * @param {module:api/WebhooksApi~getWebHooksCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/BBWebHook>}
      */
     this.getWebHooks = function(callback) {
       var postBody = null;
@@ -175,7 +178,7 @@
       var authNames = ['BBOAuth2'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = [BBWebHook];
 
       return this.apiClient.callApi(
         '/webhook/', 'GET',

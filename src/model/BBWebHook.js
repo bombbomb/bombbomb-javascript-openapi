@@ -34,7 +34,7 @@
     if (!root.BombbombNodejsOpenapi) {
       root.BombbombNodejsOpenapi = {};
     }
-    root.BombbombNodejsOpenapi.ModelString = factory(root.BombbombNodejsOpenapi.ApiClient);
+    root.BombbombNodejsOpenapi.BBWebHook = factory(root.BombbombNodejsOpenapi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,36 +43,73 @@
 
 
   /**
-   * The ModelString model module.
-   * @module model/ModelString
+   * The BBWebHook model module.
+   * @module model/BBWebHook
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>ModelString</code>.
-   * @alias module:model/ModelString
+   * Constructs a new <code>BBWebHook</code>.
+   * The BBWebHook class
+   * @alias module:model/BBWebHook
    * @class
    */
   var exports = function() {
     var _this = this;
 
+
+
+
+
   };
 
   /**
-   * Constructs a <code>ModelString</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>BBWebHook</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ModelString} obj Optional instance to populate.
-   * @return {module:model/ModelString} The populated <code>ModelString</code> instance.
+   * @param {module:model/BBWebHook} obj Optional instance to populate.
+   * @return {module:model/BBWebHook} The populated <code>BBWebHook</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('userId')) {
+        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
+      }
+      if (data.hasOwnProperty('hookId')) {
+        obj['hookId'] = ApiClient.convertToType(data['hookId'], 'Integer');
+      }
+      if (data.hasOwnProperty('url')) {
+        obj['url'] = ApiClient.convertToType(data['url'], 'String');
+      }
+      if (data.hasOwnProperty('isHidden')) {
+        obj['isHidden'] = ApiClient.convertToType(data['isHidden'], 'Boolean');
+      }
     }
     return obj;
   }
 
+  /**
+   * The user to whom the webhook belongs
+   * @member {String} userId
+   */
+  exports.prototype['userId'] = undefined;
+  /**
+   * The id of the hook
+   * @member {Integer} hookId
+   */
+  exports.prototype['hookId'] = undefined;
+  /**
+   * the url to send hook requests to
+   * @member {String} url
+   */
+  exports.prototype['url'] = undefined;
+  /**
+   * Whether the hook is displayed to the user
+   * @member {Boolean} isHidden
+   */
+  exports.prototype['isHidden'] = undefined;
 
 
 

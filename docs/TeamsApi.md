@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**cancelJerichoSend**](TeamsApi.md#cancelJerichoSend) | **DELETE** /team/{teamId}/jericho/{jerichoId} | Cancel a Jericho Send
 [**getClientGroupAssets**](TeamsApi.md#getClientGroupAssets) | **GET** /team/assets/ | Lists team assets
 [**getJerichoSends**](TeamsApi.md#getJerichoSends) | **GET** /team/{teamId}/jericho | List Jericho Sends
+[**getJerichoStats**](TeamsApi.md#getJerichoStats) | **GET** /team/{teamId}/jericho/{jerichoId}/performance | Gets Jericho performance statistics
 [**queueJerichoSend**](TeamsApi.md#queueJerichoSend) | **POST** /team/{teamId}/jericho | Creates a Jericho send.
 
 
@@ -165,6 +166,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[JerichoConfiguration]**](JerichoConfiguration.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getJerichoStats"></a>
+# **getJerichoStats**
+> JerichoPerformance getJerichoStats(jerichoId, teamId)
+
+Gets Jericho performance statistics
+
+Returns an aggregate view of the performance of a Jericho send
+
+### Example
+```javascript
+var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
+var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new BombbombNodejsOpenapi.TeamsApi();
+
+var jerichoId = "jerichoId_example"; // String | ID of the Jericho job
+
+var teamId = "teamId_example"; // String | ID of team through which Jericho was sent
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getJerichoStats(jerichoId, teamId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jerichoId** | **String**| ID of the Jericho job | 
+ **teamId** | **String**| ID of team through which Jericho was sent | 
+
+### Return type
+
+[**JerichoPerformance**](JerichoPerformance.md)
 
 ### Authorization
 

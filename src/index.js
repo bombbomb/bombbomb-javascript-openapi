@@ -25,12 +25,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BBWebHook', 'model/InlineResponse200', 'model/InlineResponse200Items', 'model/JerichoConfiguration', 'model/ModelString', 'model/OAuthClient', 'model/VideoEmailPrompt', 'api/PromptsApi', 'api/TeamsApi', 'api/UtilitiesApi', 'api/WebhooksApi'], factory);
+    define(['ApiClient', 'model/BBWebHook', 'model/InlineResponse200', 'model/InlineResponse200Items', 'model/JerichoConfiguration', 'model/JerichoPerformance', 'model/ModelString', 'model/OAuthClient', 'model/VideoEmailPrompt', 'api/PromptsApi', 'api/TeamsApi', 'api/UtilitiesApi', 'api/WebhooksApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/BBWebHook'), require('./model/InlineResponse200'), require('./model/InlineResponse200Items'), require('./model/JerichoConfiguration'), require('./model/ModelString'), require('./model/OAuthClient'), require('./model/VideoEmailPrompt'), require('./api/PromptsApi'), require('./api/TeamsApi'), require('./api/UtilitiesApi'), require('./api/WebhooksApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/BBWebHook'), require('./model/InlineResponse200'), require('./model/InlineResponse200Items'), require('./model/JerichoConfiguration'), require('./model/JerichoPerformance'), require('./model/ModelString'), require('./model/OAuthClient'), require('./model/VideoEmailPrompt'), require('./api/PromptsApi'), require('./api/TeamsApi'), require('./api/UtilitiesApi'), require('./api/WebhooksApi'));
   }
-}(function(ApiClient, BBWebHook, InlineResponse200, InlineResponse200Items, JerichoConfiguration, ModelString, OAuthClient, VideoEmailPrompt, PromptsApi, TeamsApi, UtilitiesApi, WebhooksApi) {
+}(function(ApiClient, BBWebHook, InlineResponse200, InlineResponse200Items, JerichoConfiguration, JerichoPerformance, ModelString, OAuthClient, VideoEmailPrompt, PromptsApi, TeamsApi, UtilitiesApi, WebhooksApi) {
   'use strict';
 
   /**
@@ -90,6 +90,11 @@
      * @property {module:model/JerichoConfiguration}
      */
     JerichoConfiguration: JerichoConfiguration,
+    /**
+     * The JerichoPerformance model constructor.
+     * @property {module:model/JerichoPerformance}
+     */
+    JerichoPerformance: JerichoPerformance,
     /**
      * The ModelString model constructor.
      * @property {module:model/ModelString}

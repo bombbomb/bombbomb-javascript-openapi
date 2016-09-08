@@ -1,7 +1,11 @@
 language: node_js
 node_js:
-  - "6"
-  - "6.1"
-  - "5"
-  - "5.11"
-
+- '6'
+- '6.1'
+- '5'
+- '5.11'
+deploy:
+  provider: npm
+  email: "patrick@bombbomb.com"
+  api_key:
+    secure: pRk6OAzDQ/2LZB2lQK/8cQop6wyguzPAwv+0eFOy7NReMpxppFoEXs3hQzMfnL+lEGbBwQ0eFuMAzvDMdg6YOgt7RuUBotg8Ga8avtQIq3QZc2iQglv3VYn6jtFFKASow7Rnyvpc/0jvyatWUoU+MZmCWPLcaR854fMx+5mzppEeEvuBU+u+TAJW9xF02E9TBmeRN5+K6UbzV0nDhzm0ZUw+dnhEopBhU/3S/jqlXwpQFBT+9iu9sjvyeioT3sw0OLK+vjd26HmiyEDxpwr+vcFxfGB0irIr9o+m7f9jcj7r/Lp9aNeXIsGMB+1FYS2bCCQOri6LdbkOwcYaaRC+yJGzqDKYq7tpKvKMu8SabrK+jaqGYWi4QwDbJz9fK8fpmq54VBT4pSkTLhszG+2h0wwvjlCkliyeNQ/mPYHhlqumRj6lIk+7LjPLkJamarVwvZJLMkaHmzcipbkEkHzdNgABk5NmVSLBmeCGjOE9e9HUrBBDnypyzsQEdB8B8vqzGasYPNWypNJXa5mTKsO/JmLsFQAhhuzYN+Q0qwkdrZjnOb8bwKA9pg5CVOA9kDGDs8gE4U5CmGoWx7l7u6ebja8EdM/tmwav8SEEgWAmd0aLOMtrpqntB/Ok9ni8neYFj8ZtJuKsAu54/P4yCddzTOHG2waDSmkIkfxZsvlbKas=

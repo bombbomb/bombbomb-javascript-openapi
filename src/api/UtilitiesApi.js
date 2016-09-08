@@ -42,7 +42,7 @@
   /**
    * Utilities service.
    * @module api/UtilitiesApi
-   * @version $api_version
+   * @version {$api_version}
    */
 
   /**

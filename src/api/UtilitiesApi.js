@@ -42,7 +42,7 @@
   /**
    * Utilities service.
    * @module api/UtilitiesApi
-   * @version {2.0}
+   * @version 2.0
    */
 
   /**

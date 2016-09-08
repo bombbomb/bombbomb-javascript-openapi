@@ -45,7 +45,7 @@
   /**
    * The JerichoConfiguration model module.
    * @module model/JerichoConfiguration
-   * @version {2.0}
+   * @version 2.0
    */
 
   /**

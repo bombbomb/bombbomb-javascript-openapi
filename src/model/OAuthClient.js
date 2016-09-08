@@ -45,7 +45,7 @@
   /**
    * The OAuthClient model module.
    * @module model/OAuthClient
-   * @version {2.0}
+   * @version 2.0
    */
 
   /**

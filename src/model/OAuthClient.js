@@ -45,7 +45,7 @@
   /**
    * The OAuthClient model module.
    * @module model/OAuthClient
-   * @version {$api_version}
+   * @version {2.0}
    */
 
   /**

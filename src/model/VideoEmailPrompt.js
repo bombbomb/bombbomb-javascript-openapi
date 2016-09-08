@@ -45,7 +45,7 @@
   /**
    * The VideoEmailPrompt model module.
    * @module model/VideoEmailPrompt
-   * @version {$api_version}
+   * @version {2.0}
    */
 
   /**

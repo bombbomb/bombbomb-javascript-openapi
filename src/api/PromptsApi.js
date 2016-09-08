@@ -42,7 +42,7 @@
   /**
    * Prompts service.
    * @module api/PromptsApi
-   * @version {$api_version}
+   * @version {2.0}
    */
 
   /**

@@ -45,7 +45,7 @@
   /**
    * The ModelString model module.
    * @module model/ModelString
-   * @version 1.0.0
+   * @version $api_version
    */
 
   /**

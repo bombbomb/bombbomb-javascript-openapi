@@ -45,7 +45,7 @@
   /**
    * The BBWebHook model module.
    * @module model/BBWebHook
-   * @version 1.0.0
+   * @version $api_version
    */
 
   /**

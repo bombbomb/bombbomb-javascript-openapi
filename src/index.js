@@ -34,7 +34,7 @@
   'use strict';
 
   /**
-   * We make hits!.<br>
+   * We_make_it_easy_to_build_relationships_using_simple_videos_.<br>
    * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -62,7 +62,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 1.0.0
+   * @version $api_version
    */
   var exports = {
     /**

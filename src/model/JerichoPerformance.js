@@ -45,7 +45,7 @@
   /**
    * The JerichoPerformance model module.
    * @module model/JerichoPerformance
-   * @version 1.0.0
+   * @version $api_version
    */
 
   /**

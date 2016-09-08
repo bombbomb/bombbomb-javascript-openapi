@@ -42,7 +42,7 @@
   /**
    * Teams service.
    * @module api/TeamsApi
-   * @version 1.0.0
+   * @version $api_version
    */
 
   /**

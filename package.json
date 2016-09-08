@@ -1,7 +1,7 @@
 {
   "name": "bombbomb-nodejs-openapi",
-  "version": "1.0.0",
-  "description": "We make hits!",
+  "version": "$api_version",
+  "description": "We_make_it_easy_to_build_relationships_using_simple_videos_",
   "license": "Apache-2.0",
   "main": "src/index.js",
   "scripts": {

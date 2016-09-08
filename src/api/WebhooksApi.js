@@ -42,7 +42,7 @@
   /**
    * Webhooks service.
    * @module api/WebhooksApi
-   * @version 1.0.0
+   * @version $api_version
    */
 
   /**

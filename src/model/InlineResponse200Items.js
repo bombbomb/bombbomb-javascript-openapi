@@ -45,7 +45,7 @@
   /**
    * The InlineResponse200Items model module.
    * @module model/InlineResponse200Items
-   * @version 1.0.0
+   * @version $api_version
    */
 
   /**

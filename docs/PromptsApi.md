@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.PromptsApi
+# Bombbomb.PromptsApi
 
 All URIs are relative to *https://api.bombbomb.com/v2*
 
@@ -19,16 +19,16 @@ Sends the account holder an email prompting them to add a video to a scheduled o
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.PromptsApi();
+var apiInstance = new Bombbomb.PromptsApi();
 
-var prompt = new BombbombNodejsOpenapi.VideoEmailPrompt(); // VideoEmailPrompt | The Video Email Prompt to be created
+var prompt = new Bombbomb.VideoEmailPrompt(); // VideoEmailPrompt | The Video Email Prompt to be created
 
 
 var callback = function(error, data, response) {
@@ -70,14 +70,14 @@ Gets a prompt
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.PromptsApi();
+var apiInstance = new Bombbomb.PromptsApi();
 
 var id = "id_example"; // String | The Id of the prompt
 
@@ -121,9 +121,9 @@ Respond to a prompt by either adding a video, sending without a video or cancell
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
+var Bombbomb = require('bombbomb');
 
-var apiInstance = new BombbombNodejsOpenapi.PromptsApi();
+var apiInstance = new Bombbomb.PromptsApi();
 
 var id = "id_example"; // String | The id of the prompt.
 

@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.WebhooksApi
+# Bombbomb.WebhooksApi
 
 All URIs are relative to *https://api.bombbomb.com/v2*
 
@@ -20,14 +20,14 @@ Idempotently adds a Webhook url
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.WebhooksApi();
+var apiInstance = new Bombbomb.WebhooksApi();
 
 var hookUrl = "hookUrl_example"; // String | The Url of your listener
 
@@ -71,14 +71,14 @@ Deletes a Webhook
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.WebhooksApi();
+var apiInstance = new Bombbomb.WebhooksApi();
 
 var hookId = "hookId_example"; // String | The id of the webhook to delete
 
@@ -122,14 +122,14 @@ Lists all registered Webhooks
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.WebhooksApi();
+var apiInstance = new Bombbomb.WebhooksApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -167,14 +167,14 @@ Triggers a test webhook to be sent to your endpoints.
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.WebhooksApi();
+var apiInstance = new Bombbomb.WebhooksApi();
 
 var callback = function(error, data, response) {
   if (error) {

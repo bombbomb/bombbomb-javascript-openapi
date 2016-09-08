@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.TeamsApi
+# Bombbomb.TeamsApi
 
 All URIs are relative to *https://api.bombbomb.com/v2*
 
@@ -21,14 +21,14 @@ Cancels a scheduled Jericho send from being sent.
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.TeamsApi();
+var apiInstance = new Bombbomb.TeamsApi();
 
 var jerichoId = "jerichoId_example"; // String | ID of the Jericho Job to cancel
 
@@ -72,14 +72,14 @@ Returns a collection of assets
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.TeamsApi();
+var apiInstance = new Bombbomb.TeamsApi();
 
 var assetType = "assetType_example"; // String | The type of assets.
 
@@ -135,14 +135,14 @@ Lists Jericho sends, both pending and sent.
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.TeamsApi();
+var apiInstance = new Bombbomb.TeamsApi();
 
 var teamId = "teamId_example"; // String | The team whose Jericho sends you wish to see.
 
@@ -186,14 +186,14 @@ Returns an aggregate view of the performance of a Jericho send
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.TeamsApi();
+var apiInstance = new Bombbomb.TeamsApi();
 
 var jerichoId = "jerichoId_example"; // String | ID of the Jericho job
 
@@ -240,16 +240,16 @@ Sends email content on behalf of members of a client group. There are two forms 
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.TeamsApi();
+var apiInstance = new Bombbomb.TeamsApi();
 
-var config = new BombbombNodejsOpenapi.JerichoConfiguration(); // JerichoConfiguration | JSON representing a Jericho configuration
+var config = new Bombbomb.JerichoConfiguration(); // JerichoConfiguration | JSON representing a Jericho configuration
 
 var teamId = "teamId_example"; // String | The ID of the team.
 

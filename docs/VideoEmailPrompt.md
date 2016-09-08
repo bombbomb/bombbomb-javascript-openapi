@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.VideoEmailPrompt
+# Bombbomb.VideoEmailPrompt
 
 ## Properties
 Name | Type | Description | Notes

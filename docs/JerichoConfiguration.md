@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.JerichoConfiguration
+# Bombbomb.JerichoConfiguration
 
 ## Properties
 Name | Type | Description | Notes

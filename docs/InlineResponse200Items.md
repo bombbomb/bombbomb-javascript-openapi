@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.InlineResponse200Items
+# Bombbomb.InlineResponse200Items
 
 ## Properties
 Name | Type | Description | Notes

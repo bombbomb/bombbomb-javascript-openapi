@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.BBWebHook
+# Bombbomb.BBWebHook
 
 ## Properties
 Name | Type | Description | Notes

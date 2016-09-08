@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.OAuthClient
+# Bombbomb.OAuthClient
 
 ## Properties
 Name | Type | Description | Notes

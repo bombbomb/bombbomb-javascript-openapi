@@ -1,4 +1,4 @@
-# BombbombNodejsOpenapi.UtilitiesApi
+# Bombbomb.UtilitiesApi
 
 All URIs are relative to *https://api.bombbomb.com/v2*
 
@@ -20,14 +20,14 @@ Creates an OAuth Client managed by the user
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.UtilitiesApi();
+var apiInstance = new Bombbomb.UtilitiesApi();
 
 var name = "name_example"; // String | The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD
 
@@ -74,14 +74,14 @@ Deletes an OAuth Client managed by the user
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.UtilitiesApi();
+var apiInstance = new Bombbomb.UtilitiesApi();
 
 var id = "id_example"; // String | The id of the OAuth Client
 
@@ -125,14 +125,14 @@ Enumerates OAuth Clients managed by the user
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
-var defaultClient = BombbombNodejsOpenapi.ApiClient.default;
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new BombbombNodejsOpenapi.UtilitiesApi();
+var apiInstance = new Bombbomb.UtilitiesApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -170,9 +170,9 @@ Describes methods available through the API.
 
 ### Example
 ```javascript
-var BombbombNodejsOpenapi = require('bombbomb-nodejs-openapi');
+var Bombbomb = require('bombbomb');
 
-var apiInstance = new BombbombNodejsOpenapi.UtilitiesApi();
+var apiInstance = new Bombbomb.UtilitiesApi();
 
 var callback = function(error, data, response) {
   if (error) {

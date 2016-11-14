@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**addWebHook**](WebhooksApi.md#addWebHook) | **POST** /webhook | Add Webhook
 [**deleteWebHook**](WebhooksApi.md#deleteWebHook) | **DELETE** /webhook/{hookId} | Deletes Webhook
 [**getWebHooks**](WebhooksApi.md#getWebHooks) | **GET** /webhook/ | Lists Webhooks
+[**listWebHookEvents**](WebhooksApi.md#listWebHookEvents) | **GET** /webhook/events | Describe WebHook Events
 [**sendWebhookExample**](WebhooksApi.md#sendWebhookExample) | **POST** /webhook/test | Sends test Webhook
 
 
@@ -58,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="deleteWebHook"></a>
@@ -109,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="getWebHooks"></a>
@@ -154,7 +155,47 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="listWebHookEvents"></a>
+# **listWebHookEvents**
+> listWebHookEvents()
+
+Describe WebHook Events
+
+Returns example Webhook events for each kind of possible event.
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+
+var apiInstance = new Bombbomb.WebhooksApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.listWebHookEvents(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="sendWebhookExample"></a>
@@ -199,6 +240,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 

@@ -34,7 +34,7 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.BBWebHook = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.CurriculumUserProgress = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,15 +43,15 @@
 
 
   /**
-   * The BBWebHook model module.
-   * @module model/BBWebHook
+   * The CurriculumUserProgress model module.
+   * @module model/CurriculumUserProgress
    * @version 2.0.21432
    */
 
   /**
-   * Constructs a new <code>BBWebHook</code>.
-   * The BBWebHook class
-   * @alias module:model/BBWebHook
+   * Constructs a new <code>CurriculumUserProgress</code>.
+   * The CurriculumUserProgress class
+   * @alias module:model/CurriculumUserProgress
    * @class
    */
   var exports = function() {
@@ -61,55 +61,64 @@
 
 
 
+
   };
 
   /**
-   * Constructs a <code>BBWebHook</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CurriculumUserProgress</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/BBWebHook} obj Optional instance to populate.
-   * @return {module:model/BBWebHook} The populated <code>BBWebHook</code> instance.
+   * @param {module:model/CurriculumUserProgress} obj Optional instance to populate.
+   * @return {module:model/CurriculumUserProgress} The populated <code>CurriculumUserProgress</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
       if (data.hasOwnProperty('userId')) {
         obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
       }
-      if (data.hasOwnProperty('hookId')) {
-        obj['hookId'] = ApiClient.convertToType(data['hookId'], 'Integer');
+      if (data.hasOwnProperty('curriculumItemId')) {
+        obj['curriculumItemId'] = ApiClient.convertToType(data['curriculumItemId'], 'String');
       }
-      if (data.hasOwnProperty('url')) {
-        obj['url'] = ApiClient.convertToType(data['url'], 'String');
+      if (data.hasOwnProperty('curriculumId')) {
+        obj['curriculumId'] = ApiClient.convertToType(data['curriculumId'], 'String');
       }
-      if (data.hasOwnProperty('isHidden')) {
-        obj['isHidden'] = ApiClient.convertToType(data['isHidden'], 'Boolean');
+      if (data.hasOwnProperty('completedDate')) {
+        obj['completedDate'] = ApiClient.convertToType(data['completedDate'], 'Date');
       }
     }
     return obj;
   }
 
   /**
-   * The user to whom the webhook belongs
+   * Id
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
+  /**
+   * User Id
    * @member {String} userId
    */
   exports.prototype['userId'] = undefined;
   /**
-   * The id of the hook
-   * @member {Integer} hookId
+   * Curriculum Item Id
+   * @member {String} curriculumItemId
    */
-  exports.prototype['hookId'] = undefined;
+  exports.prototype['curriculumItemId'] = undefined;
   /**
-   * the url to send hook requests to
-   * @member {String} url
+   * Curriculum Id
+   * @member {String} curriculumId
    */
-  exports.prototype['url'] = undefined;
+  exports.prototype['curriculumId'] = undefined;
   /**
-   * Whether the hook is displayed to the user
-   * @member {Boolean} isHidden
+   * When the final email is scheduled to be sent
+   * @member {Date} completedDate
    */
-  exports.prototype['isHidden'] = undefined;
+  exports.prototype['completedDate'] = undefined;
 
 
 

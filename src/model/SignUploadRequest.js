@@ -34,7 +34,7 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.TeamPublicRepresentation = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.SignUploadRequest = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,15 +43,15 @@
 
 
   /**
-   * The TeamPublicRepresentation model module.
-   * @module model/TeamPublicRepresentation
+   * The SignUploadRequest model module.
+   * @module model/SignUploadRequest
    * @version 2.0.22196
    */
 
   /**
-   * Constructs a new <code>TeamPublicRepresentation</code>.
-   * The TeamPublicRepresentation class
-   * @alias module:model/TeamPublicRepresentation
+   * Constructs a new <code>SignUploadRequest</code>.
+   * The SignUploadRequest class
+   * @alias module:model/SignUploadRequest
    * @class
    */
   var exports = function() {
@@ -59,48 +59,39 @@
 
 
 
-
   };
 
   /**
-   * Constructs a <code>TeamPublicRepresentation</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SignUploadRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/TeamPublicRepresentation} obj Optional instance to populate.
-   * @return {module:model/TeamPublicRepresentation} The populated <code>TeamPublicRepresentation</code> instance.
+   * @param {module:model/SignUploadRequest} obj Optional instance to populate.
+   * @return {module:model/SignUploadRequest} The populated <code>SignUploadRequest</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('expiration')) {
+        obj['expiration'] = ApiClient.convertToType(data['expiration'], 'Date');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('createdDate')) {
-        obj['createdDate'] = ApiClient.convertToType(data['createdDate'], 'String');
+      if (data.hasOwnProperty('conditions')) {
+        obj['conditions'] = ApiClient.convertToType(data['conditions'], Object);
       }
     }
     return obj;
   }
 
   /**
-   * The id of the team
-   * @member {String} id
+   * when the upload will expire.
+   * @member {Date} expiration
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['expiration'] = undefined;
   /**
-   * The name of the team
-   * @member {String} name
+   * Key/Value object of request conditions.
+   * @member {Object} conditions
    */
-  exports.prototype['name'] = undefined;
-  /**
-   * The date the team was created
-   * @member {String} createdDate
-   */
-  exports.prototype['createdDate'] = undefined;
+  exports.prototype['conditions'] = undefined;
 
 
 

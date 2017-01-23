@@ -34,7 +34,7 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.TeamPublicRepresentation = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.SignUploadResponse = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,15 +43,15 @@
 
 
   /**
-   * The TeamPublicRepresentation model module.
-   * @module model/TeamPublicRepresentation
+   * The SignUploadResponse model module.
+   * @module model/SignUploadResponse
    * @version 2.0.22196
    */
 
   /**
-   * Constructs a new <code>TeamPublicRepresentation</code>.
-   * The TeamPublicRepresentation class
-   * @alias module:model/TeamPublicRepresentation
+   * Constructs a new <code>SignUploadResponse</code>.
+   * The SignUploadResponse class
+   * @alias module:model/SignUploadResponse
    * @class
    */
   var exports = function() {
@@ -59,48 +59,39 @@
 
 
 
-
   };
 
   /**
-   * Constructs a <code>TeamPublicRepresentation</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SignUploadResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/TeamPublicRepresentation} obj Optional instance to populate.
-   * @return {module:model/TeamPublicRepresentation} The populated <code>TeamPublicRepresentation</code> instance.
+   * @param {module:model/SignUploadResponse} obj Optional instance to populate.
+   * @return {module:model/SignUploadResponse} The populated <code>SignUploadResponse</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('policy')) {
+        obj['policy'] = ApiClient.convertToType(data['policy'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('createdDate')) {
-        obj['createdDate'] = ApiClient.convertToType(data['createdDate'], 'String');
+      if (data.hasOwnProperty('signature')) {
+        obj['signature'] = ApiClient.convertToType(data['signature'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The id of the team
-   * @member {String} id
+   * Base64 encoded policy.
+   * @member {String} policy
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['policy'] = undefined;
   /**
-   * The name of the team
-   * @member {String} name
+   * Signature for policy.
+   * @member {String} signature
    */
-  exports.prototype['name'] = undefined;
-  /**
-   * The date the team was created
-   * @member {String} createdDate
-   */
-  exports.prototype['createdDate'] = undefined;
+  exports.prototype['signature'] = undefined;
 
 
 

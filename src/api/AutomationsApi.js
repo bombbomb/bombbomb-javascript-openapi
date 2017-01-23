@@ -25,29 +25,29 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Curriculum', 'model/CurriculumWithProgress'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Curriculum'), require('../model/CurriculumWithProgress'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.CurriculumApi = factory(root.Bombbomb.ApiClient, root.Bombbomb.Curriculum, root.Bombbomb.CurriculumWithProgress);
+    root.Bombbomb.AutomationsApi = factory(root.Bombbomb.ApiClient);
   }
-}(this, function(ApiClient, Curriculum, CurriculumWithProgress) {
+}(this, function(ApiClient) {
   'use strict';
 
   /**
-   * Curriculum service.
-   * @module api/CurriculumApi
+   * Automations service.
+   * @module api/AutomationsApi
    * @version 2.0.22196
    */
 
   /**
-   * Constructs a new CurriculumApi. 
-   * @alias module:api/CurriculumApi
+   * Constructs a new AutomationsApi. 
+   * @alias module:api/AutomationsApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -57,30 +57,39 @@
 
 
     /**
-     * Callback function to receive the result of the getCurricula operation.
-     * @callback module:api/CurriculumApi~getCurriculaCallback
+     * Callback function to receive the result of the getDripDropStats operation.
+     * @callback module:api/AutomationsApi~getDripDropStatsCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/Curriculum>} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get Curricula
-     * Get Curricula, optionally with progress included.
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.includeProgress Whether to return progress with the curriculum.
-     * @param {module:api/CurriculumApi~getCurriculaCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/Curriculum>}
+     * Get Automation Email Stats
+     * Get Automation Email Stats
+     * @param {String} dripId The id of the drip
+     * @param {String} dripDropId The id of the drip drop
+     * @param {module:api/AutomationsApi~getDripDropStatsCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.getCurricula = function(opts, callback) {
-      opts = opts || {};
+    this.getDripDropStats = function(dripId, dripDropId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'dripId' is set
+      if (dripId == undefined || dripId == null) {
+        throw "Missing the required parameter 'dripId' when calling getDripDropStats";
+      }
+
+      // verify the required parameter 'dripDropId' is set
+      if (dripDropId == undefined || dripDropId == null) {
+        throw "Missing the required parameter 'dripDropId' when calling getDripDropStats";
+      }
 
 
       var pathParams = {
+        'dripId': dripId,
+        'dripDropId': dripDropId
       };
       var queryParams = {
-        'includeProgress': opts['includeProgress']
       };
       var headerParams = {
       };
@@ -90,34 +99,40 @@
       var authNames = ['BBOAuth2'];
       var contentTypes = ['application/x-www-form-urlencoded'];
       var accepts = ['application/json'];
-      var returnType = [Curriculum];
+      var returnType = null;
 
       return this.apiClient.callApi(
-        '/curricula/', 'GET',
+        '/automation/{dripId}/dripdrop/{dripDropId}/stats', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the getUserCurriculumWithProgress operation.
-     * @callback module:api/CurriculumApi~getUserCurriculumWithProgressCallback
+     * Callback function to receive the result of the getDripStats operation.
+     * @callback module:api/AutomationsApi~getDripStatsCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/CurriculumWithProgress>} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get Detailed For User
-     * Get all curricula for user including progress for each curriculum.
-     * @param {module:api/CurriculumApi~getUserCurriculumWithProgressCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/CurriculumWithProgress>}
+     * Get Automation Stats
+     * Get Automation Stats
+     * @param {String} id The id of the automation
+     * @param {module:api/AutomationsApi~getDripStatsCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.getUserCurriculumWithProgress = function(callback) {
+    this.getDripStats = function(id, callback) {
       var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling getDripStats";
+      }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -129,10 +144,10 @@
       var authNames = ['BBOAuth2'];
       var contentTypes = ['application/x-www-form-urlencoded'];
       var accepts = ['application/json'];
-      var returnType = [CurriculumWithProgress];
+      var returnType = null;
 
       return this.apiClient.callApi(
-        '/curriculum/getForUserWithProgress', 'GET',
+        '/automation/{id}/stats', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

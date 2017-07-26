@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 <a name="createPrintingPressEmail"></a>
 # **createPrintingPressEmail**
-> createPrintingPressEmail(templateId, content, replace, opts)
+> createPrintingPressEmail(templateId, content, opts)
 
 Create an Email with Printing Press
 
-Prints an email using the template id and content to the users account.If a video id, is include it will replace any video placeholders with that video.
+Prints an email using the template id and content to the users account.If a video id is included, it will replace any video placeholders with that video.
 
 ### Example
 ```javascript
@@ -33,9 +33,8 @@ var templateId = "templateId_example"; // String | The template id to be printed
 
 var content = "content_example"; // String | The content of the email.
 
-var replace = true; // Boolean | Set whether to replace video placeholders with video id.
-
 var opts = { 
+  'emailId': "emailId_example", // String | The email id to be printed to.
   'videoId': "videoId_example", // String | A video to replace video place holders with.
   'subjectLine': "subjectLine_example" // String | The subject line to be printed.
 };
@@ -47,7 +46,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.createPrintingPressEmail(templateId, content, replace, opts, callback);
+apiInstance.createPrintingPressEmail(templateId, content, opts, callback);
 ```
 
 ### Parameters
@@ -56,7 +55,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **templateId** | **String**| The template id to be printed. | 
  **content** | **String**| The content of the email. | 
- **replace** | **Boolean**| Set whether to replace video placeholders with video id. | 
+ **emailId** | **String**| The email id to be printed to. | [optional] 
  **videoId** | **String**| A video to replace video place holders with. | [optional] 
  **subjectLine** | **String**| The subject line to be printed. | [optional] 
 

@@ -34,7 +34,7 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.InlineResponse200Items = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.VideoEncodingStatusResponse = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,14 +43,15 @@
 
 
   /**
-   * The InlineResponse200Items model module.
-   * @module model/InlineResponse200Items
+   * The VideoEncodingStatusResponse model module.
+   * @module model/VideoEncodingStatusResponse
    * @version 2.0.24005
    */
 
   /**
-   * Constructs a new <code>InlineResponse200Items</code>.
-   * @alias module:model/InlineResponse200Items
+   * Constructs a new <code>VideoEncodingStatusResponse</code>.
+   * The VideoEncodingStatusResponse class
+   * @alias module:model/VideoEncodingStatusResponse
    * @class
    */
   var exports = function() {
@@ -59,52 +60,47 @@
 
 
 
-
   };
 
   /**
-   * Constructs a <code>InlineResponse200Items</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>VideoEncodingStatusResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/InlineResponse200Items} obj Optional instance to populate.
-   * @return {module:model/InlineResponse200Items} The populated <code>InlineResponse200Items</code> instance.
+   * @param {module:model/VideoEncodingStatusResponse} obj Optional instance to populate.
+   * @return {module:model/VideoEncodingStatusResponse} The populated <code>VideoEncodingStatusResponse</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('isReady')) {
+        obj['isReady'] = ApiClient.convertToType(data['isReady'], 'Boolean');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('isFailed')) {
+        obj['isFailed'] = ApiClient.convertToType(data['isFailed'], 'Boolean');
       }
-      if (data.hasOwnProperty('userId')) {
-        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
-      }
-      if (data.hasOwnProperty('thumbUrl')) {
-        obj['thumbUrl'] = ApiClient.convertToType(data['thumbUrl'], 'String');
+      if (data.hasOwnProperty('progress')) {
+        obj['progress'] = ApiClient.convertToType(data['progress'], 'Integer');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} id
+   * Returns true if the video is done encoding and finalized.
+   * @member {Boolean} isReady
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['isReady'] = undefined;
   /**
-   * @member {String} name
+   * Returns true if the video encoding process failed.
+   * @member {Boolean} isFailed
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['isFailed'] = undefined;
   /**
-   * @member {String} userId
+   * 0-100 value indicating progress of video encoding process.
+   * @member {Integer} progress
    */
-  exports.prototype['userId'] = undefined;
-  /**
-   * @member {String} thumbUrl
-   */
-  exports.prototype['thumbUrl'] = undefined;
+  exports.prototype['progress'] = undefined;
 
 
 

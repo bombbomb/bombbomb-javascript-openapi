@@ -4,10 +4,62 @@ All URIs are relative to *https://api.bombbomb.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getVideoEncodingStatus**](VideosApi.md#getVideoEncodingStatus) | **GET** /videos/{videoId}/status | Video Encoding Status
 [**getVideoRecorder**](VideosApi.md#getVideoRecorder) | **GET** /videos/live/getRecorder | Get Live Video Recorder HTML
 [**markLiveRecordingComplete**](VideosApi.md#markLiveRecordingComplete) | **POST** /videos/live/markComplete | Completes a live recording
 [**signUpload**](VideosApi.md#signUpload) | **POST** /video/signedUpload | Generate Signed Url
 
+
+<a name="getVideoEncodingStatus"></a>
+# **getVideoEncodingStatus**
+> VideoEncodingStatusResponse getVideoEncodingStatus(videoId)
+
+Video Encoding Status
+
+Get information about the current state of encoding for a given video id.
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.VideosApi();
+
+var videoId = "videoId_example"; // String | The video's id.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getVideoEncodingStatus(videoId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **String**| The video&#39;s id. | 
+
+### Return type
+
+[**VideoEncodingStatusResponse**](VideoEncodingStatusResponse.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="getVideoRecorder"></a>
 # **getVideoRecorder**

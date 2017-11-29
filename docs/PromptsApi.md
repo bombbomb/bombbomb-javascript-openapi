@@ -12,13 +12,14 @@ Method | HTTP request | Description
 [**getVideoEmailPrompt**](PromptsApi.md#getVideoEmailPrompt) | **GET** /prompt/{id} | Gets a prompt
 [**getVideoEmailPrompts**](PromptsApi.md#getVideoEmailPrompts) | **GET** /prompt/ | List prompts
 [**respondToVideoEmailPrompt**](PromptsApi.md#respondToVideoEmailPrompt) | **POST** /prompt/{id}/response | Respond to a prompt
+[**updatePrompt**](PromptsApi.md#updatePrompt) | **PUT** /prompts/{id} | Update Prompt
 [**updatePromptBot**](PromptsApi.md#updatePromptBot) | **PUT** /prompts/bots/{id} | Update Prompt Bot
 [**updatePromptCampaign**](PromptsApi.md#updatePromptCampaign) | **PUT** /prompts/campaigns/{id} | Update Prompt Campaign
 
 
 <a name="createPromptBot"></a>
 # **createPromptBot**
-> PromptBot createPromptBot(listId, emailId, name, subject, content, contactFieldValueColumn, botTypeId, templateId, opts)
+> PromptBot createPromptBot(emailId, name, subject, content, contactFieldValueColumn, botTypeId, templateId, opts)
 
 Create a running Prompt Bot for a list
 
@@ -35,8 +36,6 @@ BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new Bombbomb.PromptsApi();
 
-var listId = "listId_example"; // String | The list id to attach the bot to.
-
 var emailId = "emailId_example"; // String | The default email to use.
 
 var name = "name_example"; // String | The name of the bot.
@@ -52,6 +51,7 @@ var botTypeId = "botTypeId_example"; // String | The type of bot to create.
 var templateId = "templateId_example"; // String | The template used to create the email id.
 
 var opts = { 
+  'listId': "listId_example", // String | The list id to attach the bot to.
   'videoId': "videoId_example", // String | The video used in the email.
   'endDate': "endDate_example" // String | The time frame to complete sending to the list.
 };
@@ -63,14 +63,13 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createPromptBot(listId, emailId, name, subject, content, contactFieldValueColumn, botTypeId, templateId, opts, callback);
+apiInstance.createPromptBot(emailId, name, subject, content, contactFieldValueColumn, botTypeId, templateId, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| The list id to attach the bot to. | 
  **emailId** | **String**| The default email to use. | 
  **name** | **String**| The name of the bot. | 
  **subject** | **String**| The subject of the default email. | 
@@ -78,6 +77,7 @@ Name | Type | Description  | Notes
  **contactFieldValueColumn** | **String**| The custom field value column with dates for this bot. | 
  **botTypeId** | **String**| The type of bot to create. | 
  **templateId** | **String**| The template used to create the email id. | 
+ **listId** | **String**| The list id to attach the bot to. | [optional] 
  **videoId** | **String**| The video used in the email. | [optional] 
  **endDate** | **String**| The time frame to complete sending to the list. | [optional] 
 
@@ -433,9 +433,74 @@ No authorization required
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
+<a name="updatePrompt"></a>
+# **updatePrompt**
+> updatePrompt(id, opts)
+
+Update Prompt
+
+Updates a Prompt
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.PromptsApi();
+
+var id = "id_example"; // String | The prompt's id
+
+var opts = { 
+  'sendMechanism': "sendMechanism_example", // String | The mechanism for the prompt to be sent
+  'facebookMessage': "facebookMessage_example", // String | The facebook message assigned to the prompt
+  'twitterMessage': "twitterMessage_example", // String | The twitter message assigned to the prompt
+  'videoId': "videoId_example", // String | The id of the video.
+  'emailId': "emailId_example", // String | The id of the email.
+  'subject': "subject_example" // String | The subject of the email
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.updatePrompt(id, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The prompt&#39;s id | 
+ **sendMechanism** | **String**| The mechanism for the prompt to be sent | [optional] 
+ **facebookMessage** | **String**| The facebook message assigned to the prompt | [optional] 
+ **twitterMessage** | **String**| The twitter message assigned to the prompt | [optional] 
+ **videoId** | **String**| The id of the video. | [optional] 
+ **emailId** | **String**| The id of the email. | [optional] 
+ **subject** | **String**| The subject of the email | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="updatePromptBot"></a>
 # **updatePromptBot**
-> PromptBot updatePromptBot(id, listId, emailId, name, subject, content, contactFieldValueColumn, templateId, opts)
+> PromptBot updatePromptBot(id, emailId, name, subject, content, contactFieldValueColumn, templateId, opts)
 
 Update Prompt Bot
 
@@ -454,8 +519,6 @@ var apiInstance = new Bombbomb.PromptsApi();
 
 var id = "id_example"; // String | The bot id.
 
-var listId = "listId_example"; // String | The list id to attach the bot to.
-
 var emailId = "emailId_example"; // String | The default email to use.
 
 var name = "name_example"; // String | The name of the bot.
@@ -469,6 +532,7 @@ var contactFieldValueColumn = "contactFieldValueColumn_example"; // String | The
 var templateId = "templateId_example"; // String | The template used to create the email id.
 
 var opts = { 
+  'listId': "listId_example", // String | The list id to attach the bot to.
   'videoId': "videoId_example", // String | The video used in the default email.
   'endDate': "endDate_example", // String | The time frame to complete sending to the list.
   'status': "status_example" // String | The status of the bot.
@@ -481,7 +545,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.updatePromptBot(id, listId, emailId, name, subject, content, contactFieldValueColumn, templateId, opts, callback);
+apiInstance.updatePromptBot(id, emailId, name, subject, content, contactFieldValueColumn, templateId, opts, callback);
 ```
 
 ### Parameters
@@ -489,13 +553,13 @@ apiInstance.updatePromptBot(id, listId, emailId, name, subject, content, contact
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The bot id. | 
- **listId** | **String**| The list id to attach the bot to. | 
  **emailId** | **String**| The default email to use. | 
  **name** | **String**| The name of the bot. | 
  **subject** | **String**| The subject of the default email. | 
  **content** | **String**| The content used in the default email. | 
  **contactFieldValueColumn** | **String**| The custom field value column with dates for this bot. | 
  **templateId** | **String**| The template used to create the email id. | 
+ **listId** | **String**| The list id to attach the bot to. | [optional] 
  **videoId** | **String**| The video used in the default email. | [optional] 
  **endDate** | **String**| The time frame to complete sending to the list. | [optional] 
  **status** | **String**| The status of the bot. | [optional] 
@@ -538,7 +602,7 @@ var opts = {
   'brandedTemplateId': "brandedTemplateId_example", // String | The template to use for branded feel emails.
   'personalTemplateId': "personalTemplateId_example", // String | The template to use for personal feel emails.
   'enabled': true, // Boolean | Set whether the user is able to start receiving prompts.
-  'autoShares': "autoShares_example" // String | These are what we are autosharing to
+  'sendMechanism': "sendMechanism_example" // String | The way to send the prompt
 };
 
 var callback = function(error, data, response) {
@@ -559,7 +623,7 @@ Name | Type | Description  | Notes
  **brandedTemplateId** | **String**| The template to use for branded feel emails. | [optional] 
  **personalTemplateId** | **String**| The template to use for personal feel emails. | [optional] 
  **enabled** | **Boolean**| Set whether the user is able to start receiving prompts. | [optional] 
- **autoShares** | **String**| These are what we are autosharing to | [optional] 
+ **sendMechanism** | **String**| The way to send the prompt | [optional] 
 
 ### Return type
 

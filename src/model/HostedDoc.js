@@ -34,7 +34,7 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.SignUploadResponse = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.HostedDoc = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,15 +43,15 @@
 
 
   /**
-   * The SignUploadResponse model module.
-   * @module model/SignUploadResponse
+   * The HostedDoc model module.
+   * @module model/HostedDoc
    * @version 2.0.25797
    */
 
   /**
-   * Constructs a new <code>SignUploadResponse</code>.
-   * The SignUploadResponse class
-   * @alias module:model/SignUploadResponse
+   * Constructs a new <code>HostedDoc</code>.
+   * The HostedDoc class
+   * @alias module:model/HostedDoc
    * @class
    */
   var exports = function() {
@@ -59,39 +59,75 @@
 
 
 
+
+
+
+
   };
 
   /**
-   * Constructs a <code>SignUploadResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>HostedDoc</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SignUploadResponse} obj Optional instance to populate.
-   * @return {module:model/SignUploadResponse} The populated <code>SignUploadResponse</code> instance.
+   * @param {module:model/HostedDoc} obj Optional instance to populate.
+   * @return {module:model/HostedDoc} The populated <code>HostedDoc</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('policy')) {
-        obj['policy'] = ApiClient.convertToType(data['policy'], 'String');
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('signature')) {
-        obj['signature'] = ApiClient.convertToType(data['signature'], 'String');
+      if (data.hasOwnProperty('userId')) {
+        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
+      }
+      if (data.hasOwnProperty('fileName')) {
+        obj['fileName'] = ApiClient.convertToType(data['fileName'], 'String');
+      }
+      if (data.hasOwnProperty('shortUrl')) {
+        obj['shortUrl'] = ApiClient.convertToType(data['shortUrl'], 'String');
+      }
+      if (data.hasOwnProperty('longUrl')) {
+        obj['longUrl'] = ApiClient.convertToType(data['longUrl'], 'String');
+      }
+      if (data.hasOwnProperty('uploadDate')) {
+        obj['uploadDate'] = ApiClient.convertToType(data['uploadDate'], 'Date');
       }
     }
     return obj;
   }
 
   /**
-   * Base64 encoded policy.
-   * @member {String} policy
+   * The doc's id.
+   * @member {String} id
    */
-  exports.prototype['policy'] = undefined;
+  exports.prototype['id'] = undefined;
   /**
-   * Signature for policy.
-   * @member {String} signature
+   * The doc's owner.
+   * @member {String} userId
    */
-  exports.prototype['signature'] = undefined;
+  exports.prototype['userId'] = undefined;
+  /**
+   * docs file name.
+   * @member {String} fileName
+   */
+  exports.prototype['fileName'] = undefined;
+  /**
+   * The doc's short url.
+   * @member {String} shortUrl
+   */
+  exports.prototype['shortUrl'] = undefined;
+  /**
+   * The doc's long url.
+   * @member {String} longUrl
+   */
+  exports.prototype['longUrl'] = undefined;
+  /**
+   * The doc's upload date.
+   * @member {Date} uploadDate
+   */
+  exports.prototype['uploadDate'] = undefined;
 
 
 

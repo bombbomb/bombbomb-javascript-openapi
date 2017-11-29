@@ -29,5 +29,11 @@ Name | Type | Description | Notes
 **applyTemplate** | **Boolean** | Controls whether a user template is applied to the message as it is sent | [optional] 
 **createdDate** | **Date** | When the email was first sent out | [optional] 
 **lastNotified** | **Date** | When the user was last notified about a prompt email waiting for a video | [optional] 
+**facebookMessage** | **String** | The facebook message to be passed off to social sender | [optional] 
+**twitterMessage** | **String** | The twitter message to be passed off to social sender | [optional] 
+**linkedinMessage** | **String** | The linkedin message to be passed off to social sender | [optional] 
+**sendMechanism** | **String** | The sendMechanism property | [optional] 
+**hasSocial** | **Boolean** | this determines whether or not it has a social content. | [optional] 
+**sendTypes** | **[String]** | The types of mechanisms this prompt can send. | [optional] 
 
 

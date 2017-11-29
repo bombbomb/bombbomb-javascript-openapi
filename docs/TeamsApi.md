@@ -10,11 +10,16 @@ Method | HTTP request | Description
 [**deleteSubteam**](TeamsApi.md#deleteSubteam) | **DELETE** /team/{teamId}/subteam | Delete Subteam
 [**getAllClientGroupAssociations**](TeamsApi.md#getAllClientGroupAssociations) | **GET** /team/associations/ | Lists team associations
 [**getClientGroupAssets**](TeamsApi.md#getClientGroupAssets) | **GET** /team/assets/ | Lists team assets
+[**getClientGroupStatistics**](TeamsApi.md#getClientGroupStatistics) | **GET** /team/{teamId}/stats | Get Team statistics
 [**getJerichoSends**](TeamsApi.md#getJerichoSends) | **GET** /team/{teamId}/jericho | List Jericho Sends
 [**getJerichoStats**](TeamsApi.md#getJerichoStats) | **GET** /team/{teamId}/jericho/{jerichoId}/performance | Gets Jericho performance statistics
+[**getPagedClientGroupMembers**](TeamsApi.md#getPagedClientGroupMembers) | **GET** /team/{teamId}/members | List Team Members
 [**getSubteams**](TeamsApi.md#getSubteams) | **GET** /team/{teamId}/subteam | List Subteams
+[**getTeamPromptAggregateStats**](TeamsApi.md#getTeamPromptAggregateStats) | **GET** /team/{clientGroupId}/campaign/stats | Get aggregate stats for campaigns
+[**getTeamPromptCampaigns**](TeamsApi.md#getTeamPromptCampaigns) | **GET** /team/{clientGroupId}/campaign | Get campaigns for team
 [**queueJerichoSend**](TeamsApi.md#queueJerichoSend) | **POST** /team/{teamId}/jericho | Creates a Jericho send.
 [**removeMemberFromTeam**](TeamsApi.md#removeMemberFromTeam) | **DELETE** /team/{teamId}/member/{userId} | Remove Member from Team
+[**resendTeamMemberInvitation**](TeamsApi.md#resendTeamMemberInvitation) | **POST** /team/{teamId}/{memberUserId}/rewelcome | Resend invite
 [**updateJerichoPromptSend**](TeamsApi.md#updateJerichoPromptSend) | **PUT** /team/{teamId}/jericho/{jerichoId} | Updates the Jericho Prompt Settings
 [**updateTeam**](TeamsApi.md#updateTeam) | **POST** /team/{teamId} | Update a team
 [**updateTeamMember**](TeamsApi.md#updateTeamMember) | **PUT** /team/{teamId}/member | Update Member of Team
@@ -352,6 +357,61 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
+<a name="getClientGroupStatistics"></a>
+# **getClientGroupStatistics**
+> getClientGroupStatistics(teamId, opts)
+
+Get Team statistics
+
+Get top level statistic data for a Team
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.TeamsApi();
+
+var teamId = "teamId_example"; // String | The team id
+
+var opts = { 
+  'memberStatus': "memberStatus_example" // String | The status of members to query for
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getClientGroupStatistics(teamId, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team id | 
+ **memberStatus** | **String**| The status of members to query for | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="getJerichoSends"></a>
 # **getJerichoSends**
 > [JerichoConfiguration] getJerichoSends(teamId)
@@ -457,6 +517,73 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
+<a name="getPagedClientGroupMembers"></a>
+# **getPagedClientGroupMembers**
+> getPagedClientGroupMembers(teamId, pageSize, page, opts)
+
+List Team Members
+
+Get a paginated listing of Team members
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.TeamsApi();
+
+var teamId = "teamId_example"; // String | The team id
+
+var pageSize = "pageSize_example"; // String | Amount of records to return in a page.
+
+var page = "page_example"; // String | The page to return.
+
+var opts = { 
+  'status': "status_example", // String | The status type to filter by.
+  'search': "search_example", // String | Filter results with names that match the search term.
+  'orderBy': "orderBy_example", // String | Key to order results by
+  'orderDirection': "orderDirection_example" // String | ASC or DESC
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getPagedClientGroupMembers(teamId, pageSize, page, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team id | 
+ **pageSize** | **String**| Amount of records to return in a page. | 
+ **page** | **String**| The page to return. | 
+ **status** | **String**| The status type to filter by. | [optional] 
+ **search** | **String**| Filter results with names that match the search term. | [optional] 
+ **orderBy** | **String**| Key to order results by | [optional] 
+ **orderDirection** | **String**| ASC or DESC | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="getSubteams"></a>
 # **getSubteams**
 > [TeamPublicRepresentation] getSubteams(teamId)
@@ -498,6 +625,116 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[TeamPublicRepresentation]**](TeamPublicRepresentation.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="getTeamPromptAggregateStats"></a>
+# **getTeamPromptAggregateStats**
+> getTeamPromptAggregateStats(clientGroupId)
+
+Get aggregate stats for campaigns
+
+Get all the campaigns aggregate stats
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.TeamsApi();
+
+var clientGroupId = "clientGroupId_example"; // String | ID of the client group association
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getTeamPromptAggregateStats(clientGroupId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientGroupId** | **String**| ID of the client group association | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="getTeamPromptCampaigns"></a>
+# **getTeamPromptCampaigns**
+> getTeamPromptCampaigns(clientGroupId, opts)
+
+Get campaigns for team
+
+Get campaigns for the team and their stats
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.TeamsApi();
+
+var clientGroupId = "clientGroupId_example"; // String | ID of the client group association
+
+var opts = { 
+  'searchTerm': "searchTerm_example", // String | The value to search for in prompt subject
+  'orderBy': "orderBy_example", // String | How to sort the column
+  'asc': "asc_example" // String | Ascending or not
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getTeamPromptCampaigns(clientGroupId, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientGroupId** | **String**| ID of the client group association | 
+ **searchTerm** | **String**| The value to search for in prompt subject | [optional] 
+ **orderBy** | **String**| How to sort the column | [optional] 
+ **asc** | **String**| Ascending or not | [optional] 
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 
@@ -616,6 +853,60 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
+<a name="resendTeamMemberInvitation"></a>
+# **resendTeamMemberInvitation**
+> TeamPublicRepresentation resendTeamMemberInvitation(teamId, memberUserId)
+
+Resend invite
+
+Resend invitation to a member of a team
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.TeamsApi();
+
+var teamId = "teamId_example"; // String | The team id
+
+var memberUserId = "memberUserId_example"; // String | The user id of the member being resent an invitation.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.resendTeamMemberInvitation(teamId, memberUserId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team id | 
+ **memberUserId** | **String**| The user id of the member being resent an invitation. | 
+
+### Return type
+
+[**TeamPublicRepresentation**](TeamPublicRepresentation.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="updateJerichoPromptSend"></a>
 # **updateJerichoPromptSend**
 > updateJerichoPromptSend(teamId, jerichoId)
@@ -692,7 +983,8 @@ var apiInstance = new Bombbomb.TeamsApi();
 var teamId = "teamId_example"; // String | The team id
 
 var opts = { 
-  'name': "name_example" // String | The name of the team
+  'name': "name_example", // String | The name of the team
+  'state': "state_example" // String | The status of the login permissions
 };
 
 var callback = function(error, data, response) {
@@ -711,6 +1003,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **teamId** | **String**| The team id | 
  **name** | **String**| The name of the team | [optional] 
+ **state** | **String**| The status of the login permissions | [optional] 
 
 ### Return type
 

@@ -34,20 +34,20 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.OrdersApi = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.IntegrationsApi = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
 
   /**
-   * Orders service.
-   * @module api/OrdersApi
+   * Integrations service.
+   * @module api/IntegrationsApi
    * @version 2.0.25797
    */
 
   /**
-   * Constructs a new OrdersApi. 
-   * @alias module:api/OrdersApi
+   * Constructs a new IntegrationsApi. 
+   * @alias module:api/IntegrationsApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -57,45 +57,43 @@
 
 
     /**
-     * Callback function to receive the result of the templateAssetDelete operation.
-     * @callback module:api/OrdersApi~templateAssetDeleteCallback
+     * Callback function to receive the result of the syncUsersIntegratedLists operation.
+     * @callback module:api/IntegrationsApi~syncUsersIntegratedListsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Deletes image from user s3 store
-     * Deletes image from user s3 store
-     * @param {String} fileName Filename for deletion
-     * @param {module:api/OrdersApi~templateAssetDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * Synchronize your integration list or lists.
+     * Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.integrationId The integration to sync lists for. All integrations will sync if nothing is provided.
+     * @param {module:api/IntegrationsApi~syncUsersIntegratedListsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
-    this.templateAssetDelete = function(fileName, callback) {
+    this.syncUsersIntegratedLists = function(opts, callback) {
+      opts = opts || {};
       var postBody = null;
-
-      // verify the required parameter 'fileName' is set
-      if (fileName == undefined || fileName == null) {
-        throw "Missing the required parameter 'fileName' when calling templateAssetDelete";
-      }
 
 
       var pathParams = {
       };
       var queryParams = {
+        'integration_id': opts['integrationId']
       };
       var headerParams = {
       };
       var formParams = {
-        'fileName': fileName
       };
 
       var authNames = ['BBOAuth2'];
       var contentTypes = ['application/x-www-form-urlencoded'];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
-        '/orders/templates/images', 'DELETE',
+        '/integrations/sync', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

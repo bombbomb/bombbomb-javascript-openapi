@@ -4,18 +4,65 @@ All URIs are relative to *https://api.bombbomb.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getFacebookPages**](SocialsApi.md#getFacebookPages) | **GET** /socials/facebook/pages | Gets facebook pages
 [**getSocialArticleProperties**](SocialsApi.md#getSocialArticleProperties) | **GET** /socials/properties | Gets the social email properties
-[**getSocialAutoShares**](SocialsApi.md#getSocialAutoShares) | **GET** /socials/shares | Gets the auto shares from the client group assoc id
-[**getSocialPermissions**](SocialsApi.md#getSocialPermissions) | **GET** /socials/permissions | Get permissions for social integration
-[**getSocialStatus**](SocialsApi.md#getSocialStatus) | **GET** /socials/states | Gets the social state
-[**updateSocialAutoShares**](SocialsApi.md#updateSocialAutoShares) | **PUT** /socials/shares | Gets the auto shares from the client group assoc id
-[**updateSocialMessage**](SocialsApi.md#updateSocialMessage) | **PUT** /socials/message | Sets the users social message to what they typed in
-[**updateSocialStatus**](SocialsApi.md#updateSocialStatus) | **PUT** /socials/state | Updates the social state for the object
+[**getSocialAuthorizations**](SocialsApi.md#getSocialAuthorizations) | **GET** /socials/authorizations | Get authorizations for all social integration
+[**getSocialProfileProperties**](SocialsApi.md#getSocialProfileProperties) | **GET** /socials/profile | Gets the profile properties
+[**getSocialStats**](SocialsApi.md#getSocialStats) | **GET** /socials/{promptId}/stats | Get social stats for a prompt
+[**postSocialContent**](SocialsApi.md#postSocialContent) | **POST** /socials/content | Creates social content
+[**updateClientGroupSendMechanism**](SocialsApi.md#updateClientGroupSendMechanism) | **PUT** /socials/client/sendMechanism | Gets the auto shares from the client group assoc id
+[**updateFacebookPages**](SocialsApi.md#updateFacebookPages) | **PUT** /socials/facebook/pages | Updates facebook page Ids
+[**updateSocialContent**](SocialsApi.md#updateSocialContent) | **PUT** /socials/content | Updates social content
 
+
+<a name="getFacebookPages"></a>
+# **getFacebookPages**
+> getFacebookPages()
+
+Gets facebook pages
+
+Gets facebook pages by client id
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.SocialsApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getFacebookPages(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="getSocialArticleProperties"></a>
 # **getSocialArticleProperties**
-> getSocialArticleProperties(jerichoId, emailId, originatorId)
+> getSocialArticleProperties(emailId)
 
 Gets the social email properties
 
@@ -31,13 +78,9 @@ var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new Bombbomb.SocialsApi();
-
-var jerichoId = "jerichoId_example"; // String | associated jericho Id
 
 var emailId = "emailId_example"; // String | This is the email Id for the email url
 
-var originatorId = "originatorId_example"; // String | This is the originator Id
-
 
 var callback = function(error, data, response) {
   if (error) {
@@ -46,16 +89,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.getSocialArticleProperties(jerichoId, emailId, originatorId, callback);
+apiInstance.getSocialArticleProperties(emailId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jerichoId** | **String**| associated jericho Id | 
  **emailId** | **String**| This is the email Id for the email url | 
- **originatorId** | **String**| This is the originator Id | 
 
 ### Return type
 
@@ -70,9 +111,214 @@ null (empty response body)
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
-<a name="getSocialAutoShares"></a>
-# **getSocialAutoShares**
-> getSocialAutoShares(clientGroupId)
+<a name="getSocialAuthorizations"></a>
+# **getSocialAuthorizations**
+> getSocialAuthorizations(opts)
+
+Get authorizations for all social integration
+
+Get authorizations and autoshares for all social integration and has redirect for user to login
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.SocialsApi();
+
+var opts = { 
+  'clientGroupId': "clientGroupId_example" // String | ID of the client group association
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getSocialAuthorizations(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientGroupId** | **String**| ID of the client group association | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="getSocialProfileProperties"></a>
+# **getSocialProfileProperties**
+> getSocialProfileProperties(socialType)
+
+Gets the profile properties
+
+Gets the social profile properties
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.SocialsApi();
+
+var socialType = "socialType_example"; // String | The social type
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getSocialProfileProperties(socialType, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **socialType** | **String**| The social type | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="getSocialStats"></a>
+# **getSocialStats**
+> getSocialStats(promptId)
+
+Get social stats for a prompt
+
+Get social stats for a prompt by id
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.SocialsApi();
+
+var promptId = "promptId_example"; // String | ID of the prompt
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getSocialStats(promptId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **promptId** | **String**| ID of the prompt | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="postSocialContent"></a>
+# **postSocialContent**
+> postSocialContent(emailId)
+
+Creates social content
+
+Creates social content for an email
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.SocialsApi();
+
+var emailId = "emailId_example"; // String | The email's id
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.postSocialContent(emailId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emailId** | **String**| The email&#39;s id | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="updateClientGroupSendMechanism"></a>
+# **updateClientGroupSendMechanism**
+> updateClientGroupSendMechanism(sendMechanism, clientGroupId, opts)
 
 Gets the auto shares from the client group assoc id
 
@@ -88,9 +334,14 @@ var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new Bombbomb.SocialsApi();
+
+var sendMechanism = "sendMechanism_example"; // String | The send mechanism for the prompt
 
 var clientGroupId = "clientGroupId_example"; // String | ID of the client group association
 
+var opts = { 
+  'enabled': "enabled_example" // String | Is the send mechanism enabled?
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -99,14 +350,16 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.getSocialAutoShares(clientGroupId, callback);
+apiInstance.updateClientGroupSendMechanism(sendMechanism, clientGroupId, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **sendMechanism** | **String**| The send mechanism for the prompt | 
  **clientGroupId** | **String**| ID of the client group association | 
+ **enabled** | **String**| Is the send mechanism enabled? | [optional] 
 
 ### Return type
 
@@ -121,13 +374,13 @@ null (empty response body)
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
-<a name="getSocialPermissions"></a>
-# **getSocialPermissions**
-> getSocialPermissions(socialType)
+<a name="updateFacebookPages"></a>
+# **updateFacebookPages**
+> updateFacebookPages(pageIds)
 
-Get permissions for social integration
+Updates facebook page Ids
 
-Get permissions for social integration and has redirect for user to login
+Updates facebook page Ids to be sent to for prompts
 
 ### Example
 ```javascript
@@ -140,7 +393,7 @@ BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new Bombbomb.SocialsApi();
 
-var socialType = "socialType_example"; // String | Type of social integration
+var pageIds = "pageIds_example"; // String | Page Ids for the prompt
 
 
 var callback = function(error, data, response) {
@@ -150,14 +403,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.getSocialPermissions(socialType, callback);
+apiInstance.updateFacebookPages(pageIds, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **socialType** | **String**| Type of social integration | 
+ **pageIds** | **String**| Page Ids for the prompt | 
 
 ### Return type
 
@@ -172,64 +425,13 @@ null (empty response body)
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
-<a name="getSocialStatus"></a>
-# **getSocialStatus**
-> getSocialStatus(originatorId)
+<a name="updateSocialContent"></a>
+# **updateSocialContent**
+> updateSocialContent(socialId, opts)
 
-Gets the social state
+Updates social content
 
-Gets the social state
-
-### Example
-```javascript
-var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
-
-// Configure OAuth2 access token for authorization: BBOAuth2
-var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
-BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
-
-var apiInstance = new Bombbomb.SocialsApi();
-
-var originatorId = "originatorId_example"; // String | associated originatorId
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.getSocialStatus(originatorId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **originatorId** | **String**| associated originatorId | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[BBOAuth2](../README.md#BBOAuth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: application/json
-
-<a name="updateSocialAutoShares"></a>
-# **updateSocialAutoShares**
-> updateSocialAutoShares(autoShare, clientGroupId)
-
-Gets the auto shares from the client group assoc id
-
-Gets the auto shares from the client group assoc id
+Updates social content for an email
 
 ### Example
 ```javascript
@@ -242,10 +444,14 @@ BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new Bombbomb.SocialsApi();
 
-var autoShare = "autoShare_example"; // String | The social share that will auto share to
+var socialId = "socialId_example"; // String | The social id
 
-var clientGroupId = "clientGroupId_example"; // String | ID of the client group association
-
+var opts = { 
+  'title': "title_example", // String | The title for the article
+  'description': "description_example", // String | The article description
+  'pictureUrl': "pictureUrl_example", // String | The article picture url
+  'suggestedMessage': "suggestedMessage_example" // String | The suggested message to use
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -254,123 +460,18 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.updateSocialAutoShares(autoShare, clientGroupId, callback);
+apiInstance.updateSocialContent(socialId, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **autoShare** | **String**| The social share that will auto share to | 
- **clientGroupId** | **String**| ID of the client group association | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[BBOAuth2](../README.md#BBOAuth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: application/json
-
-<a name="updateSocialMessage"></a>
-# **updateSocialMessage**
-> updateSocialMessage(message, originatorId)
-
-Sets the users social message to what they typed in
-
-Sets the users social message to what they typed in
-
-### Example
-```javascript
-var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
-
-// Configure OAuth2 access token for authorization: BBOAuth2
-var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
-BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
-
-var apiInstance = new Bombbomb.SocialsApi();
-
-var message = "message_example"; // String | The social message the user typed in
-
-var originatorId = "originatorId_example"; // String | The parent id tied to the social share
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.updateSocialMessage(message, originatorId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **message** | **String**| The social message the user typed in | 
- **originatorId** | **String**| The parent id tied to the social share | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[BBOAuth2](../README.md#BBOAuth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: application/json
-
-<a name="updateSocialStatus"></a>
-# **updateSocialStatus**
-> updateSocialStatus(state, originatorId)
-
-Updates the social state for the object
-
-Updates the social state for the object
-
-### Example
-```javascript
-var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
-
-// Configure OAuth2 access token for authorization: BBOAuth2
-var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
-BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
-
-var apiInstance = new Bombbomb.SocialsApi();
-
-var state = "state_example"; // String | The state to set to
-
-var originatorId = "originatorId_example"; // String | The parent id tied to the social share
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.updateSocialStatus(state, originatorId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **state** | **String**| The state to set to | 
- **originatorId** | **String**| The parent id tied to the social share | 
+ **socialId** | **String**| The social id | 
+ **title** | **String**| The title for the article | [optional] 
+ **description** | **String**| The article description | [optional] 
+ **pictureUrl** | **String**| The article picture url | [optional] 
+ **suggestedMessage** | **String**| The suggested message to use | [optional] 
 
 ### Return type
 

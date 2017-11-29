@@ -6,12 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**accountDetails**](AccountsApi.md#accountDetails) | **GET** /accounts | Get account details.
 [**createAccount**](AccountsApi.md#createAccount) | **POST** /accounts | Create Account
+[**getClientStatistics**](AccountsApi.md#getClientStatistics) | **GET** /accounts/stats | Get Client Statistics
 [**subscriptionPurchaseAllowed**](AccountsApi.md#subscriptionPurchaseAllowed) | **GET** /accounts/purchaseable | Check if subscription purchase allowed.
 
 
 <a name="accountDetails"></a>
 # **accountDetails**
-> accountDetails(opts)
+> accountDetails()
 
 Get account details.
 
@@ -23,12 +24,6 @@ var Bombbomb = require('bombbomb');
 
 var apiInstance = new Bombbomb.AccountsApi();
 
-var opts = { 
-  'email': "email_example", // String | Your login email address
-  'pw': "pw_example", // String | Your password
-  'apiKey': "apiKey_example" // String | Your Api Key
-};
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -36,16 +31,11 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.accountDetails(opts, callback);
+apiInstance.accountDetails(callback);
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **String**| Your login email address | [optional] 
- **pw** | **String**| Your password | [optional] 
- **apiKey** | **String**| Your Api Key | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -96,7 +86,8 @@ var opts = {
   'industry': "industry_example", // String | Industry of the user.
   'address': "address_example", // String | Street Address of the user.
   'city': "city_example", // String | City of the user.
-  'postalCode': "postalCode_example" // String | Postal/Zip code of the user.
+  'postalCode': "postalCode_example", // String | Postal/Zip code of the user.
+  'preventWelcomeEmail': "preventWelcomeEmail_example" // String | prevent an email with login credentials from being sent to the new account. must be set to 'true'
 };
 
 var callback = function(error, data, response) {
@@ -124,6 +115,7 @@ Name | Type | Description  | Notes
  **address** | **String**| Street Address of the user. | [optional] 
  **city** | **String**| City of the user. | [optional] 
  **postalCode** | **String**| Postal/Zip code of the user. | [optional] 
+ **preventWelcomeEmail** | **String**| prevent an email with login credentials from being sent to the new account. must be set to &#39;true&#39; | [optional] 
 
 ### Return type
 
@@ -138,9 +130,61 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
+<a name="getClientStatistics"></a>
+# **getClientStatistics**
+> getClientStatistics(opts)
+
+Get Client Statistics
+
+Gets general statics for a Client
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.AccountsApi();
+
+var opts = { 
+  'clientId': "clientId_example" // String | Client ID of the account to retrieve. Defaults to yourself.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getClientStatistics(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | **String**| Client ID of the account to retrieve. Defaults to yourself. | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="subscriptionPurchaseAllowed"></a>
 # **subscriptionPurchaseAllowed**
-> subscriptionPurchaseAllowed(opts)
+> subscriptionPurchaseAllowed()
 
 Check if subscription purchase allowed.
 
@@ -152,12 +196,6 @@ var Bombbomb = require('bombbomb');
 
 var apiInstance = new Bombbomb.AccountsApi();
 
-var opts = { 
-  'email': "email_example", // String | Your login email address
-  'pw': "pw_example", // String | Your password
-  'apiKey': "apiKey_example" // String | Your Api Key
-};
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -165,16 +203,11 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.subscriptionPurchaseAllowed(opts, callback);
+apiInstance.subscriptionPurchaseAllowed(callback);
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **String**| Your login email address | [optional] 
- **pw** | **String**| Your password | [optional] 
- **apiKey** | **String**| Your Api Key | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 

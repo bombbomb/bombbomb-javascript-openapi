@@ -7,7 +7,10 @@ Method | HTTP request | Description
 [**accountDetails**](AccountsApi.md#accountDetails) | **GET** /accounts | Get account details.
 [**createAccount**](AccountsApi.md#createAccount) | **POST** /accounts | Create Account
 [**getClientStatistics**](AccountsApi.md#getClientStatistics) | **GET** /accounts/stats | Get Client Statistics
+[**getUserCountry**](AccountsApi.md#getUserCountry) | **GET** /accounts/{clientId}/country | Gets user country
+[**resetApiKey**](AccountsApi.md#resetApiKey) | **PUT** /accounts/apikey | Reset API key
 [**subscriptionPurchaseAllowed**](AccountsApi.md#subscriptionPurchaseAllowed) | **GET** /accounts/purchaseable | Check if subscription purchase allowed.
+[**updateProfileData**](AccountsApi.md#updateProfileData) | **POST** /account/profile/ | Add profile information.
 
 
 <a name="accountDetails"></a>
@@ -21,6 +24,11 @@ Get the details of the user&#39;s account.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new Bombbomb.AccountsApi();
 
@@ -43,7 +51,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[BBOAuth2](../README.md#BBOAuth2)
 
 ### HTTP request headers
 
@@ -87,7 +95,7 @@ var opts = {
   'address': "address_example", // String | Street Address of the user.
   'city': "city_example", // String | City of the user.
   'postalCode': "postalCode_example", // String | Postal/Zip code of the user.
-  'preventWelcomeEmail': "preventWelcomeEmail_example" // String | prevent an email with login credentials from being sent to the new account. must be set to 'true'
+  'preventWelcomeEmail': true // Boolean | prevent an email with login credentials from being sent to the new account. must be set to 'true'
 };
 
 var callback = function(error, data, response) {
@@ -115,7 +123,7 @@ Name | Type | Description  | Notes
  **address** | **String**| Street Address of the user. | [optional] 
  **city** | **String**| City of the user. | [optional] 
  **postalCode** | **String**| Postal/Zip code of the user. | [optional] 
- **preventWelcomeEmail** | **String**| prevent an email with login credentials from being sent to the new account. must be set to &#39;true&#39; | [optional] 
+ **preventWelcomeEmail** | **Boolean**| prevent an email with login credentials from being sent to the new account. must be set to &#39;true&#39; | [optional] 
 
 ### Return type
 
@@ -150,7 +158,9 @@ BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 var apiInstance = new Bombbomb.AccountsApi();
 
 var opts = { 
-  'clientId': "clientId_example" // String | Client ID of the account to retrieve. Defaults to yourself.
+  'clientId': "clientId_example", // String | Client ID of the account to retrieve. Defaults to yourself.
+  'refresh': true, // Boolean | Boolean for whether data returned should be from cache or not.
+  'statisticValues': "statisticValues_example" // String | Array of data that should be returned, used exclusively for cacheless data
 };
 
 var callback = function(error, data, response) {
@@ -168,6 +178,98 @@ apiInstance.getClientStatistics(opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **clientId** | **String**| Client ID of the account to retrieve. Defaults to yourself. | [optional] 
+ **refresh** | **Boolean**| Boolean for whether data returned should be from cache or not. | [optional] 
+ **statisticValues** | **String**| Array of data that should be returned, used exclusively for cacheless data | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="getUserCountry"></a>
+# **getUserCountry**
+> getUserCountry()
+
+Gets user country
+
+Gets the users country
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.AccountsApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getUserCountry(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="resetApiKey"></a>
+# **resetApiKey**
+> resetApiKey()
+
+Reset API key
+
+Resets the current user&#39;s API key and returns the new key
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.AccountsApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.resetApiKey(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -193,6 +295,11 @@ Check whether the user can purchase a subscription.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new Bombbomb.AccountsApi();
 
@@ -215,7 +322,59 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="updateProfileData"></a>
+# **updateProfileData**
+> updateProfileData(opts)
+
+Add profile information.
+
+Add profile information to this users account
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.AccountsApi();
+
+var opts = { 
+  'profileData': "profileData_example" // String | Profile field information for the account
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.updateProfileData(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **profileData** | **String**| Profile field information for the account | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
 
 ### HTTP request headers
 

@@ -5,6 +5,8 @@ All URIs are relative to *https://api.bombbomb.com/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addTeamMember**](TeamsApi.md#addTeamMember) | **POST** /team/{teamId}/member | Add Member to Team
+[**addUsers**](TeamsApi.md#addUsers) | **POST** /team/{teamId}/members | Add users to group.
+[**addUsersFromCsv**](TeamsApi.md#addUsersFromCsv) | **POST** /team/{teamId}/members/csv | Add members to group from CSV
 [**cancelJerichoSend**](TeamsApi.md#cancelJerichoSend) | **DELETE** /team/{teamId}/jericho/{jerichoId} | Cancel a Jericho Send
 [**createSubteam**](TeamsApi.md#createSubteam) | **POST** /team/{teamId}/subteam | Add a Subteam
 [**deleteSubteam**](TeamsApi.md#deleteSubteam) | **DELETE** /team/{teamId}/subteam | Delete Subteam
@@ -17,6 +19,7 @@ Method | HTTP request | Description
 [**getSubteams**](TeamsApi.md#getSubteams) | **GET** /team/{teamId}/subteam | List Subteams
 [**getTeamPromptAggregateStats**](TeamsApi.md#getTeamPromptAggregateStats) | **GET** /team/{clientGroupId}/campaign/stats | Get aggregate stats for campaigns
 [**getTeamPromptCampaigns**](TeamsApi.md#getTeamPromptCampaigns) | **GET** /team/{clientGroupId}/campaign | Get campaigns for team
+[**inviteToSocialPromptTeam**](TeamsApi.md#inviteToSocialPromptTeam) | **POST** /teams/prompt/invite | Invite a list to join the admin&#39;s social prompt team
 [**queueJerichoSend**](TeamsApi.md#queueJerichoSend) | **POST** /team/{teamId}/jericho | Creates a Jericho send.
 [**removeMemberFromTeam**](TeamsApi.md#removeMemberFromTeam) | **DELETE** /team/{teamId}/member/{userId} | Remove Member from Team
 [**resendTeamMemberInvitation**](TeamsApi.md#resendTeamMemberInvitation) | **POST** /team/{teamId}/{memberUserId}/rewelcome | Resend invite
@@ -47,9 +50,10 @@ var apiInstance = new Bombbomb.TeamsApi();
 var teamId = "teamId_example"; // String | The team id
 
 var opts = { 
-  'userId': "userId_example", // String | The user id of the member being added to the team.
+  'admin': true, // Boolean | Set if the user is an admin of this team.
+  'subgroupIds': "subgroupIds_example", // String | Subgroup IDs to add user to
   'userEmail': "userEmail_example", // String | The email of the member being added to the team.
-  'admin': true // Boolean | Set if the user is an admin of this team.
+  'userId': "userId_example" // String | The user id of the member being added to the team.
 };
 
 var callback = function(error, data, response) {
@@ -67,13 +71,137 @@ apiInstance.addTeamMember(teamId, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **teamId** | **String**| The team id | 
- **userId** | **String**| The user id of the member being added to the team. | [optional] 
- **userEmail** | **String**| The email of the member being added to the team. | [optional] 
  **admin** | **Boolean**| Set if the user is an admin of this team. | [optional] 
+ **subgroupIds** | **String**| Subgroup IDs to add user to | [optional] 
+ **userEmail** | **String**| The email of the member being added to the team. | [optional] 
+ **userId** | **String**| The user id of the member being added to the team. | [optional] 
 
 ### Return type
 
 **&#39;String&#39;**
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="addUsers"></a>
+# **addUsers**
+> addUsers(teamId, userDetails, opts)
+
+Add users to group.
+
+Add a new or existing user to group.
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.TeamsApi();
+
+var teamId = "teamId_example"; // String | The team id
+
+var userDetails = "userDetails_example"; // String | Array of emails or objects containing details needed to create user
+
+var opts = { 
+  'sendWelcomeEmail': "sendWelcomeEmail_example", // String | Whether to send welcome email to new users
+  'subgroupIds': "subgroupIds_example" // String | Subgroup IDs to add user to
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addUsers(teamId, userDetails, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team id | 
+ **userDetails** | **String**| Array of emails or objects containing details needed to create user | 
+ **sendWelcomeEmail** | **String**| Whether to send welcome email to new users | [optional] 
+ **subgroupIds** | **String**| Subgroup IDs to add user to | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="addUsersFromCsv"></a>
+# **addUsersFromCsv**
+> addUsersFromCsv(teamId, csvImportId, map, opts)
+
+Add members to group from CSV
+
+Imports members to a group from a given CSV ID.
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.TeamsApi();
+
+var teamId = "teamId_example"; // String | The team id
+
+var csvImportId = "csvImportId_example"; // String | ID of the CSV to import
+
+var map = "map_example"; // String | Object to use when mapping import to AccountCreateDetails. Key is property name on details, value is CSV column number.
+
+var opts = { 
+  'sendWelcomeEmail': "sendWelcomeEmail_example", // String | Whether to send welcome email to new users
+  'subgroupIds': "subgroupIds_example" // String | Subgroup IDs to add user to
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addUsersFromCsv(teamId, csvImportId, map, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team id | 
+ **csvImportId** | **String**| ID of the CSV to import | 
+ **map** | **String**| Object to use when mapping import to AccountCreateDetails. Key is property name on details, value is CSV column number. | 
+ **sendWelcomeEmail** | **String**| Whether to send welcome email to new users | [optional] 
+ **subgroupIds** | **String**| Subgroup IDs to add user to | [optional] 
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 
@@ -709,8 +837,7 @@ var clientGroupId = "clientGroupId_example"; // String | ID of the client group 
 
 var opts = { 
   'searchTerm': "searchTerm_example", // String | The value to search for in prompt subject
-  'orderBy': "orderBy_example", // String | How to sort the column
-  'asc': "asc_example" // String | Ascending or not
+  'currentPage': "currentPage_example" // String | The current page
 };
 
 var callback = function(error, data, response) {
@@ -729,8 +856,61 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **clientGroupId** | **String**| ID of the client group association | 
  **searchTerm** | **String**| The value to search for in prompt subject | [optional] 
- **orderBy** | **String**| How to sort the column | [optional] 
- **asc** | **String**| Ascending or not | [optional] 
+ **currentPage** | **String**| The current page | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="inviteToSocialPromptTeam"></a>
+# **inviteToSocialPromptTeam**
+> inviteToSocialPromptTeam(teamId, listId)
+
+Invite a list to join the admin&#39;s social prompt team
+
+Invite to Social Prompt Team
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.TeamsApi();
+
+var teamId = "teamId_example"; // String | The team id
+
+var listId = "listId_example"; // String | List to invite to the social prompt team.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.inviteToSocialPromptTeam(teamId, listId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team id | 
+ **listId** | **String**| List to invite to the social prompt team. | 
 
 ### Return type
 
@@ -984,7 +1164,8 @@ var teamId = "teamId_example"; // String | The team id
 
 var opts = { 
   'name': "name_example", // String | The name of the team
-  'state': "state_example" // String | The status of the login permissions
+  'state': "state_example", // String | The status of the login permissions
+  'subteamsCanAddMembers': true // Boolean | Updates subteam member adding setting on group
 };
 
 var callback = function(error, data, response) {
@@ -1004,6 +1185,7 @@ Name | Type | Description  | Notes
  **teamId** | **String**| The team id | 
  **name** | **String**| The name of the team | [optional] 
  **state** | **String**| The status of the login permissions | [optional] 
+ **subteamsCanAddMembers** | **Boolean**| Updates subteam member adding setting on group | [optional] 
 
 ### Return type
 
@@ -1020,7 +1202,7 @@ Name | Type | Description  | Notes
 
 <a name="updateTeamMember"></a>
 # **updateTeamMember**
-> updateTeamMember(teamId, userId, admin)
+> updateTeamMember(teamId, userId, admin, opts)
 
 Update Member of Team
 
@@ -1043,6 +1225,9 @@ var userId = "userId_example"; // String | The user id of the member being added
 
 var admin = true; // Boolean | Set if the user is an admin of this team.
 
+var opts = { 
+  'permissionSuiteId': "permissionSuiteId_example" // String | Set if the user is an admin of this team.
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1051,7 +1236,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.updateTeamMember(teamId, userId, admin, callback);
+apiInstance.updateTeamMember(teamId, userId, admin, opts, callback);
 ```
 
 ### Parameters
@@ -1061,6 +1246,7 @@ Name | Type | Description  | Notes
  **teamId** | **String**| The team id | 
  **userId** | **String**| The user id of the member being added to the team. | 
  **admin** | **Boolean**| Set if the user is an admin of this team. | 
+ **permissionSuiteId** | **String**| Set if the user is an admin of this team. | [optional] 
 
 ### Return type
 

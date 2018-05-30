@@ -9,7 +9,11 @@ Method | HTTP request | Description
 [**getEmailTracking**](EmailsApi.md#getEmailTracking) | **GET** /emails/{emailId}/tracking | Get Email Tracking
 [**getEmailTrackingInteractions**](EmailsApi.md#getEmailTrackingInteractions) | **GET** /emails/{emailId}/tracking/interactions | Get Email Tracking Interactions
 [**getHourlyEmailTracking**](EmailsApi.md#getHourlyEmailTracking) | **GET** /emails/{emailId}/tracking/hourly | Get Hourly Email Tracking
+[**getLiveFireData**](EmailsApi.md#getLiveFireData) | **GET** /emails/livefire | Get livefire feed data
 [**getQuickSendTemplates**](EmailsApi.md#getQuickSendTemplates) | **GET** /emails/quicksend/templates | Get all quicksend templates
+[**getTemplateHtmlForTemplateId**](EmailsApi.md#getTemplateHtmlForTemplateId) | **GET** /emails/templates/{templateId}/html | Get the HTML for a given template
+[**getVideoQuickSenderData**](EmailsApi.md#getVideoQuickSenderData) | **GET** /emails/quicksend | Get quicksend data
+[**saveQuickSenderSettings**](EmailsApi.md#saveQuickSenderSettings) | **POST** /emails/quicksend/settings | Save quicksender settings
 [**videoQuickSender**](EmailsApi.md#videoQuickSender) | **POST** /emails/quicksend | Send a quicksend email
 
 
@@ -298,6 +302,51 @@ null (empty response body)
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
+<a name="getLiveFireData"></a>
+# **getLiveFireData**
+> getLiveFireData()
+
+Get livefire feed data
+
+Get the user data for the live fire feed emails
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.EmailsApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getLiveFireData(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="getQuickSendTemplates"></a>
 # **getQuickSendTemplates**
 > getQuickSendTemplates()
@@ -329,6 +378,177 @@ apiInstance.getQuickSendTemplates(callback);
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="getTemplateHtmlForTemplateId"></a>
+# **getTemplateHtmlForTemplateId**
+> getTemplateHtmlForTemplateId(templateId, opts)
+
+Get the HTML for a given template
+
+Get the HTML for a given template, with or without rendered variables
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.EmailsApi();
+
+var templateId = "templateId_example"; // String | The id of the template.
+
+var opts = { 
+  'renderVariables': "renderVariables_example" // String | Whether to render profile variables in the returned HTML.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getTemplateHtmlForTemplateId(templateId, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **templateId** | **String**| The id of the template. | 
+ **renderVariables** | **String**| Whether to render profile variables in the returned HTML. | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="getVideoQuickSenderData"></a>
+# **getVideoQuickSenderData**
+> getVideoQuickSenderData(opts)
+
+Get quicksend data
+
+Get the user data for quicksender, including templates and lists.
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.EmailsApi();
+
+var opts = { 
+  'message': "message_example", // String | A message for the video content.
+  'subject': "subject_example", // String | A subject for the video content.
+  'videoId': "videoId_example", // String | A video ID.
+  'templateId': "templateId_example", // String | A template ID.
+  'commaDelimEmails': "commaDelimEmails_example" // String | Comma delimited emails
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getVideoQuickSenderData(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **message** | **String**| A message for the video content. | [optional] 
+ **subject** | **String**| A subject for the video content. | [optional] 
+ **videoId** | **String**| A video ID. | [optional] 
+ **templateId** | **String**| A template ID. | [optional] 
+ **commaDelimEmails** | **String**| Comma delimited emails | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="saveQuickSenderSettings"></a>
+# **saveQuickSenderSettings**
+> saveQuickSenderSettings(opts)
+
+Save quicksender settings
+
+Save the quicksender notification and default template settings
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.EmailsApi();
+
+var opts = { 
+  'alertOnPlay': "alertOnPlay_example", // String | A preference setting for whether or not to notify user on quicksend email video plays.
+  'alertOnOpen': "alertOnOpen_example", // String | A preference setting for whether or not to notify user on quicksend email opens.
+  'templateId': "templateId_example" // String | Id of a template to use for this send. A null value means use the default for this user.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.saveQuickSenderSettings(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **alertOnPlay** | **String**| A preference setting for whether or not to notify user on quicksend email video plays. | [optional] 
+ **alertOnOpen** | **String**| A preference setting for whether or not to notify user on quicksend email opens. | [optional] 
+ **templateId** | **String**| Id of a template to use for this send. A null value means use the default for this user. | [optional] 
 
 ### Return type
 

@@ -34,20 +34,20 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.OrdersApi = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.FormsApi = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
 
   /**
-   * Orders service.
-   * @module api/OrdersApi
+   * Forms service.
+   * @module api/FormsApi
    * @version 2.0.0
    */
 
   /**
-   * Constructs a new OrdersApi. 
-   * @alias module:api/OrdersApi
+   * Constructs a new FormsApi. 
+   * @alias module:api/FormsApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -57,36 +57,36 @@
 
 
     /**
-     * Callback function to receive the result of the templateAssetDelete operation.
-     * @callback module:api/OrdersApi~templateAssetDeleteCallback
+     * Callback function to receive the result of the getFormTrackingAsCsv operation.
+     * @callback module:api/FormsApi~getFormTrackingAsCsvCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Deletes image from user s3 store
-     * Deletes image from user s3 store
-     * @param {String} fileName Filename for deletion
-     * @param {module:api/OrdersApi~templateAssetDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * Get csv
+     * Get form tracking as csv
+     * @param {String} id Id of the form
+     * @param {module:api/FormsApi~getFormTrackingAsCsvCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.templateAssetDelete = function(fileName, callback) {
+    this.getFormTrackingAsCsv = function(id, callback) {
       var postBody = null;
 
-      // verify the required parameter 'fileName' is set
-      if (fileName == undefined || fileName == null) {
-        throw "Missing the required parameter 'fileName' when calling templateAssetDelete";
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling getFormTrackingAsCsv";
       }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
       var headerParams = {
       };
       var formParams = {
-        'fileName': fileName
       };
 
       var authNames = ['BBOAuth2'];
@@ -95,7 +95,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/orders/templates/images', 'DELETE',
+        '/forms/{id}/tracking/export', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

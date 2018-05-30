@@ -286,11 +286,11 @@ null (empty response body)
 
 <a name="deleteContacts"></a>
 # **deleteContacts**
-> deleteContacts(listId)
+> deleteContacts(opts)
 
 Delete Contacts
 
-Delete contacts
+Delete all contacts within a list, or provide a comma separated list of contactIds to delete.
 
 ### Example
 ```javascript
@@ -303,8 +303,10 @@ BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new Bombbomb.ContactsApi();
 
-var listId = "listId_example"; // String | The list of contacts to be deleted.
-
+var opts = { 
+  'listId': "listId_example", // String | The list of contacts to be deleted.
+  'contactIds': "contactIds_example" // String | comma separated list of contact ids to delete
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -313,14 +315,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.deleteContacts(listId, callback);
+apiInstance.deleteContacts(opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| The list of contacts to be deleted. | 
+ **listId** | **String**| The list of contacts to be deleted. | [optional] 
+ **contactIds** | **String**| comma separated list of contact ids to delete | [optional] 
 
 ### Return type
 

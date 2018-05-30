@@ -6,15 +6,18 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createPromptBot**](PromptsApi.md#createPromptBot) | **POST** /prompts/bots | Create a running Prompt Bot for a list
 [**createVideoEmailPrompt**](PromptsApi.md#createVideoEmailPrompt) | **POST** /prompt | Prompts user to send a video
+[**getAlternateCampaignContent**](PromptsApi.md#getAlternateCampaignContent) | **GET** /campaign/{campaignId}/content/alternate | List alternate campaign content
 [**getPendingVideoEmailPrompts**](PromptsApi.md#getPendingVideoEmailPrompts) | **GET** /prompt/pending | List pending prompts
 [**getPromptBots**](PromptsApi.md#getPromptBots) | **GET** /prompts/bots | List Prompt Bots
-[**getPromptCampaigns**](PromptsApi.md#getPromptCampaigns) | **GET** /prompts/campaigns | List Prompt Campaigns
+[**getPromptCampaigns**](PromptsApi.md#getPromptCampaigns) | **GET** /prompts/{userId}/campaigns | List Prompt Campaigns
 [**getVideoEmailPrompt**](PromptsApi.md#getVideoEmailPrompt) | **GET** /prompt/{id} | Gets a prompt
 [**getVideoEmailPrompts**](PromptsApi.md#getVideoEmailPrompts) | **GET** /prompt/ | List prompts
 [**respondToVideoEmailPrompt**](PromptsApi.md#respondToVideoEmailPrompt) | **POST** /prompt/{id}/response | Respond to a prompt
+[**syncPromptSubscriptions**](PromptsApi.md#syncPromptSubscriptions) | **POST** /prompts/campaigns/sync | Syncs Campaigns and One to Ones Subscriptions for User
 [**updatePrompt**](PromptsApi.md#updatePrompt) | **PUT** /prompts/{id} | Update Prompt
 [**updatePromptBot**](PromptsApi.md#updatePromptBot) | **PUT** /prompts/bots/{id} | Update Prompt Bot
 [**updatePromptCampaign**](PromptsApi.md#updatePromptCampaign) | **PUT** /prompts/campaigns/{id} | Update Prompt Campaign
+[**updatePromptTemplate**](PromptsApi.md#updatePromptTemplate) | **PUT** /prompts/{id}/content | Update Prompt Content
 
 
 <a name="createPromptBot"></a>
@@ -143,6 +146,57 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getAlternateCampaignContent"></a>
+# **getAlternateCampaignContent**
+> getAlternateCampaignContent(clientGroupId)
+
+List alternate campaign content
+
+Returns a list of alternate campaign content by campaign id
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.PromptsApi();
+
+var clientGroupId = "clientGroupId_example"; // String | Id for the campaign
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getAlternateCampaignContent(clientGroupId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientGroupId** | **String**| Id for the campaign | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="getPendingVideoEmailPrompts"></a>
@@ -433,6 +487,58 @@ No authorization required
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
+<a name="syncPromptSubscriptions"></a>
+# **syncPromptSubscriptions**
+> syncPromptSubscriptions(opts)
+
+Syncs Campaigns and One to Ones Subscriptions for User
+
+Syncs Campaigns and One to Ones Subscriptions for User based on their profile information. The user must be a Prompt Subscriber.
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.PromptsApi();
+
+var opts = { 
+  'migrate': true // Boolean | After syncing, migrate away from old campaigns.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.syncPromptSubscriptions(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **migrate** | **Boolean**| After syncing, migrate away from old campaigns. | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="updatePrompt"></a>
 # **updatePrompt**
 > updatePrompt(id, opts)
@@ -460,7 +566,10 @@ var opts = {
   'twitterMessage': "twitterMessage_example", // String | The twitter message assigned to the prompt
   'videoId': "videoId_example", // String | The id of the video.
   'emailId': "emailId_example", // String | The id of the email.
-  'subject': "subject_example" // String | The subject of the email
+  'subject': "subject_example", // String | The subject of the email
+  'resetCache': "resetCache_example", // String | The subject of the email
+  'resetEmailContent': "resetEmailContent_example", // String | The subject of the email
+  'status': "status_example" // String | The status of the prompt
 };
 
 var callback = function(error, data, response) {
@@ -484,6 +593,9 @@ Name | Type | Description  | Notes
  **videoId** | **String**| The id of the video. | [optional] 
  **emailId** | **String**| The id of the email. | [optional] 
  **subject** | **String**| The subject of the email | [optional] 
+ **resetCache** | **String**| The subject of the email | [optional] 
+ **resetEmailContent** | **String**| The subject of the email | [optional] 
+ **status** | **String**| The status of the prompt | [optional] 
 
 ### Return type
 
@@ -624,6 +736,69 @@ Name | Type | Description  | Notes
  **personalTemplateId** | **String**| The template to use for personal feel emails. | [optional] 
  **enabled** | **Boolean**| Set whether the user is able to start receiving prompts. | [optional] 
  **sendMechanism** | **String**| The way to send the prompt | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="updatePromptTemplate"></a>
+# **updatePromptTemplate**
+> updatePromptTemplate(id, alternateContentId, newEmailId, ogEmailId, newExampleVideoId)
+
+Update Prompt Content
+
+Updates a Prompt Content
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.PromptsApi();
+
+var id = "id_example"; // String | The prompt's id
+
+var alternateContentId = "alternateContentId_example"; // String | The alternate content id
+
+var newEmailId = "newEmailId_example"; // String | The prompt's new email id
+
+var ogEmailId = "ogEmailId_example"; // String | The prompt's original email id
+
+var newExampleVideoId = "newExampleVideoId_example"; // String | The prompt's new tutorial video id
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.updatePromptTemplate(id, alternateContentId, newEmailId, ogEmailId, newExampleVideoId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The prompt&#39;s id | 
+ **alternateContentId** | **String**| The alternate content id | 
+ **newEmailId** | **String**| The prompt&#39;s new email id | 
+ **ogEmailId** | **String**| The prompt&#39;s original email id | 
+ **newExampleVideoId** | **String**| The prompt&#39;s new tutorial video id | 
 
 ### Return type
 

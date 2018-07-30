@@ -29,7 +29,7 @@ Gets facebook pages by client id
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -74,7 +74,7 @@ Gets the social email properties
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -128,7 +128,7 @@ Get authorizations and autoshares for all social integration and has redirect fo
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -180,7 +180,7 @@ Gets the social profile properties
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -231,7 +231,7 @@ Get social stats for a prompt by id
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -282,7 +282,7 @@ Creates social content for an email
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -333,7 +333,7 @@ Sends social content that failed for a user via their associated prompt
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -384,7 +384,7 @@ Sends social content for a user via their associated prompt
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -438,7 +438,7 @@ Gets the auto shares from the client group assoc id
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -496,7 +496,7 @@ Toggles the prompt campaigns in a users account for a social integrations on or 
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -550,7 +550,7 @@ Updates facebook page Ids to be sent to for prompts
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -601,7 +601,7 @@ Updates social content for an email
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];

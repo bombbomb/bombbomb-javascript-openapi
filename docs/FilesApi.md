@@ -22,7 +22,7 @@ Deletes a users file
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -73,7 +73,7 @@ Get a single file by id
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -124,7 +124,7 @@ List all uploaded user files
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -169,7 +169,7 @@ Upload a new file
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -220,7 +220,7 @@ Get a specific page of uploaded images available to the user.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];

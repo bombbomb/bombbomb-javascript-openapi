@@ -1,20 +1,20 @@
-# Bombbomb.CurriculumApi
+# Bombbomb.UsersApi
 
 All URIs are relative to *https://api.bombbomb.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCurricula**](CurriculumApi.md#getCurricula) | **GET** /curricula/ | Get Curricula
-[**getUserCurriculumWithProgress**](CurriculumApi.md#getUserCurriculumWithProgress) | **GET** /curriculum/getForUserWithProgress | Get Detailed For User
+[**getClientContactInformation**](UsersApi.md#getClientContactInformation) | **GET** /clients/contact/information | Get client contact information.
+[**getUserProfileInfo**](UsersApi.md#getUserProfileInfo) | **GET** /users/profile/information | Get user profile information.
 
 
-<a name="getCurricula"></a>
-# **getCurricula**
-> [Curriculum] getCurricula(opts)
+<a name="getClientContactInformation"></a>
+# **getClientContactInformation**
+> getClientContactInformation()
 
-Get Curricula
+Get client contact information.
 
-Get Curricula, optionally with progress included.
+Get the client contact information of the user&#39;s account.
 
 ### Example
 ```javascript
@@ -25,31 +25,24 @@ var defaultClient = Bombbomb.ApiClient.instance;
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new Bombbomb.CurriculumApi();
-
-var opts = { 
-  'includeProgress': true // Boolean | Whether to return progress with the curriculum.
-};
+var apiInstance = new Bombbomb.UsersApi();
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
-apiInstance.getCurricula(opts, callback);
+apiInstance.getClientContactInformation(callback);
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **includeProgress** | **Boolean**| Whether to return progress with the curriculum. | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**[Curriculum]**](Curriculum.md)
+null (empty response body)
 
 ### Authorization
 
@@ -60,13 +53,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
-<a name="getUserCurriculumWithProgress"></a>
-# **getUserCurriculumWithProgress**
-> [CurriculumWithProgress] getUserCurriculumWithProgress()
+<a name="getUserProfileInfo"></a>
+# **getUserProfileInfo**
+> getUserProfileInfo()
 
-Get Detailed For User
+Get user profile information.
 
-Get all curricula for user including progress for each curriculum.
+Get the users profile information.
 
 ### Example
 ```javascript
@@ -77,16 +70,16 @@ var defaultClient = Bombbomb.ApiClient.instance;
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
 BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 
-var apiInstance = new Bombbomb.CurriculumApi();
+var apiInstance = new Bombbomb.UsersApi();
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
-apiInstance.getUserCurriculumWithProgress(callback);
+apiInstance.getUserProfileInfo(callback);
 ```
 
 ### Parameters
@@ -94,7 +87,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[CurriculumWithProgress]**](CurriculumWithProgress.md)
+null (empty response body)
 
 ### Authorization
 

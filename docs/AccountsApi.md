@@ -24,7 +24,7 @@ Get the details of the user&#39;s account.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -69,7 +69,7 @@ Creates a new BombBomb account. This method is currently only available to paid 
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -149,7 +149,7 @@ Gets general statics for a Client
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -205,7 +205,7 @@ Gets the users country
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -250,7 +250,7 @@ Resets the current user&#39;s API key and returns the new key
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -295,7 +295,7 @@ Check whether the user can purchase a subscription.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -340,7 +340,7 @@ Add profile information to this users account
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];

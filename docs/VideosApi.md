@@ -22,7 +22,7 @@ Get information about the current state of encoding for a given video id.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -73,7 +73,7 @@ Returns an object with a number of properties to help you put a video recorder o
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -82,7 +82,7 @@ BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
 var apiInstance = new Bombbomb.VideosApi();
 
 var opts = { 
-  'width': 56, // Integer | The width of the recorder to present.
+  'width': 56, // Number | The width of the recorder to present.
   'videoId': "videoId_example" // String | The id of the video to record
 };
 
@@ -100,7 +100,7 @@ apiInstance.getVideoRecorder(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **width** | **Integer**| The width of the recorder to present. | [optional] 
+ **width** | **Number**| The width of the recorder to present. | [optional] 
  **videoId** | **String**| The id of the video to record | [optional] 
 
 ### Return type
@@ -127,7 +127,7 @@ Used in conjunction with the live recorder method to mark a video recording as c
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -234,7 +234,7 @@ Upload a new video thumbnail
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];

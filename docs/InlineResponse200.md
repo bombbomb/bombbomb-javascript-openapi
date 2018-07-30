@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalPages** | **Integer** |  | [optional] 
-**items** | [**[InlineResponse200Items]**](InlineResponse200Items.md) |  | [optional] 
+**totalPages** | **Number** |  | [optional] 
+**items** | [**[ClientGroupAssetMetaData]**](ClientGroupAssetMetaData.md) |  | [optional] 
 
 

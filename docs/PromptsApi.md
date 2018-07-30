@@ -13,10 +13,11 @@ Method | HTTP request | Description
 [**getVideoEmailPrompt**](PromptsApi.md#getVideoEmailPrompt) | **GET** /prompt/{id} | Gets a prompt
 [**getVideoEmailPrompts**](PromptsApi.md#getVideoEmailPrompts) | **GET** /prompt/ | List prompts
 [**respondToVideoEmailPrompt**](PromptsApi.md#respondToVideoEmailPrompt) | **POST** /prompt/{id}/response | Respond to a prompt
+[**sendPromptImmediately**](PromptsApi.md#sendPromptImmediately) | **POST** /prompt/{id}/sendit | 
 [**syncPromptSubscriptions**](PromptsApi.md#syncPromptSubscriptions) | **POST** /prompts/campaigns/sync | Syncs Campaigns and One to Ones Subscriptions for User
 [**updatePrompt**](PromptsApi.md#updatePrompt) | **PUT** /prompts/{id} | Update Prompt
 [**updatePromptBot**](PromptsApi.md#updatePromptBot) | **PUT** /prompts/bots/{id} | Update Prompt Bot
-[**updatePromptCampaign**](PromptsApi.md#updatePromptCampaign) | **PUT** /prompts/campaigns/{id} | Update Prompt Campaign
+[**updatePromptCampaign**](PromptsApi.md#updatePromptCampaign) | **PUT** /prompts/campaigns/{clientGroupId} | Update Prompt Campaign
 [**updatePromptTemplate**](PromptsApi.md#updatePromptTemplate) | **PUT** /prompts/{id}/content | Update Prompt Content
 
 
@@ -31,7 +32,7 @@ Creates a Prompt Bot that sends emails to contacts on a list over the span of ti
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -108,7 +109,7 @@ Sends the account holder an email prompting them to add a video to a scheduled o
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -159,7 +160,7 @@ Returns a list of alternate campaign content by campaign id
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -210,7 +211,7 @@ Returns a list of prompts that have not been sent yet, and can still be customiz
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -255,7 +256,7 @@ Returns a list of all Prompt Bots for the user.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -300,7 +301,7 @@ Returns a list of all Prompt Campaigns for the user.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -345,7 +346,7 @@ Gets a prompt
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -396,7 +397,7 @@ Returns a list of all prompts.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -487,6 +488,57 @@ No authorization required
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
+<a name="sendPromptImmediately"></a>
+# **sendPromptImmediately**
+> sendPromptImmediately(id)
+
+
+
+Ignore send date and send the prompt now.
+
+### Example
+```javascript
+var Bombbomb = require('bombbomb');
+var defaultClient = Bombbomb.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: BBOAuth2
+var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
+BBOAuth2.accessToken = 'YOUR ACCESS TOKEN';
+
+var apiInstance = new Bombbomb.PromptsApi();
+
+var id = "id_example"; // String | The Id of the prompt
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.sendPromptImmediately(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of the prompt | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="syncPromptSubscriptions"></a>
 # **syncPromptSubscriptions**
 > syncPromptSubscriptions(opts)
@@ -498,7 +550,7 @@ Syncs Campaigns and One to Ones Subscriptions for User based on their profile in
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -550,7 +602,7 @@ Updates a Prompt
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -621,7 +673,7 @@ Updates a Prompt Bot&#39;s settings.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -700,7 +752,7 @@ Updates a Prompt Campaign&#39;s Settings
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -761,7 +813,7 @@ Updates a Prompt Content
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];

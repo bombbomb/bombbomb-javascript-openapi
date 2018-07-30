@@ -25,20 +25,20 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.OrdersApi = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.UsersApi = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
 
   /**
-   * Orders service.
-   * @module api/OrdersApi
+   * Users service.
+   * @module api/UsersApi
    * @version 2.0.831
    */
 
   /**
-   * Constructs a new OrdersApi. 
-   * @alias module:api/OrdersApi
+   * Constructs a new UsersApi. 
+   * @alias module:api/UsersApi
    * @class
    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -48,26 +48,20 @@
 
 
     /**
-     * Callback function to receive the result of the templateAssetDelete operation.
-     * @callback module:api/OrdersApi~templateAssetDeleteCallback
+     * Callback function to receive the result of the getClientContactInformation operation.
+     * @callback module:api/UsersApi~getClientContactInformationCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Deletes image from user s3 store
-     * Deletes image from user s3 store
-     * @param {String} fileName Filename for deletion
-     * @param {module:api/OrdersApi~templateAssetDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * Get client contact information.
+     * Get the client contact information of the user&#39;s account.
+     * @param {module:api/UsersApi~getClientContactInformationCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.templateAssetDelete = function(fileName, callback) {
+    this.getClientContactInformation = function(callback) {
       var postBody = null;
-
-      // verify the required parameter 'fileName' is set
-      if (fileName === undefined || fileName === null) {
-        throw new Error("Missing the required parameter 'fileName' when calling templateAssetDelete");
-      }
 
 
       var pathParams = {
@@ -79,7 +73,6 @@
       var headerParams = {
       };
       var formParams = {
-        'fileName': fileName
       };
 
       var authNames = ['BBOAuth2'];
@@ -88,7 +81,47 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/orders/templates/images', 'DELETE',
+        '/clients/contact/information', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getUserProfileInfo operation.
+     * @callback module:api/UsersApi~getUserProfileInfoCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get user profile information.
+     * Get the users profile information.
+     * @param {module:api/UsersApi~getUserProfileInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.getUserProfileInfo = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['BBOAuth2'];
+      var contentTypes = ['application/x-www-form-urlencoded'];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/users/profile/information', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

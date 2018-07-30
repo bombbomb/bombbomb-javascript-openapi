@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **thumbUrl** | **String** | The url of the thumbnail for the video | [optional] 
 **videoUrls** | **[String]** | Urls to different formats of the video | [optional] 
 **shortUrl** | **String** | The url to use to link to the video | [optional] 
-**height** | **Integer** | The height of the video in pixels | [optional] 
-**width** | **Integer** | The width of the video in pixels | [optional] 
+**height** | **Number** | The height of the video in pixels | [optional] 
+**width** | **Number** | The width of the video in pixels | [optional] 
 **uploadDate** | **String** | The date the video was uploaded | [optional] 
 
 

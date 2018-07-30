@@ -19,5 +19,6 @@ Name | Type | Description | Notes
 **sendWithoutVideo** | **Boolean** | Video Prompt: Whether to send the final email if no video was recorded. | [optional] 
 **status** | **String** | The state of the send. | [optional] 
 **mediaType** | **String** | The type of media used for a social send | [optional] 
+**customInitialEmailSubjectLine** | **String** | The custom subject line for the prompt initial email | [optional] 
 
 

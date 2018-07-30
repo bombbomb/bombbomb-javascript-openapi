@@ -25,7 +25,7 @@
     if (!root.Bombbomb) {
       root.Bombbomb = {};
     }
-    root.Bombbomb.TeamPublicRepresentation = factory(root.Bombbomb.ApiClient);
+    root.Bombbomb.ClientGroupAssetMetaData = factory(root.Bombbomb.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,15 +34,14 @@
 
 
   /**
-   * The TeamPublicRepresentation model module.
-   * @module model/TeamPublicRepresentation
+   * The ClientGroupAssetMetaData model module.
+   * @module model/ClientGroupAssetMetaData
    * @version 2.0.831
    */
 
   /**
-   * Constructs a new <code>TeamPublicRepresentation</code>.
-   * The TeamPublicRepresentation class
-   * @alias module:model/TeamPublicRepresentation
+   * Constructs a new <code>ClientGroupAssetMetaData</code>.
+   * @alias module:model/ClientGroupAssetMetaData
    * @class
    */
   var exports = function() {
@@ -51,14 +50,15 @@
 
 
 
+
   };
 
   /**
-   * Constructs a <code>TeamPublicRepresentation</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ClientGroupAssetMetaData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/TeamPublicRepresentation} obj Optional instance to populate.
-   * @return {module:model/TeamPublicRepresentation} The populated <code>TeamPublicRepresentation</code> instance.
+   * @param {module:model/ClientGroupAssetMetaData} obj Optional instance to populate.
+   * @return {module:model/ClientGroupAssetMetaData} The populated <code>ClientGroupAssetMetaData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -70,28 +70,32 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('createdDate')) {
-        obj['createdDate'] = ApiClient.convertToType(data['createdDate'], 'String');
+      if (data.hasOwnProperty('userId')) {
+        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
+      }
+      if (data.hasOwnProperty('thumbUrl')) {
+        obj['thumbUrl'] = ApiClient.convertToType(data['thumbUrl'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The id of the team
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
   /**
-   * The name of the team
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
   /**
-   * The date the team was created
-   * @member {String} createdDate
+   * @member {String} userId
    */
-  exports.prototype['createdDate'] = undefined;
+  exports.prototype['userId'] = undefined;
+  /**
+   * @member {String} thumbUrl
+   */
+  exports.prototype['thumbUrl'] = undefined;
 
 
 

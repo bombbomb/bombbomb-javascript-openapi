@@ -28,7 +28,7 @@ Prints an email using the template id and content to the users account.If a vide
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -90,7 +90,7 @@ Get all templates accessible to the current user
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -142,7 +142,7 @@ Get Tracking data for all sends of an Email
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -197,7 +197,7 @@ Get Contact detail interactions for an Email
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -256,7 +256,7 @@ Get Tracking data for an Email,             broken down by the hour and filterab
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -313,7 +313,7 @@ Get the user data for the live fire feed emails
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -358,7 +358,7 @@ Get all quicksend templates accessible to the user.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -403,7 +403,7 @@ Get the HTML for a given template, with or without rendered variables
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -458,7 +458,7 @@ Get the user data for quicksender, including templates and lists.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -518,7 +518,7 @@ Save the quicksender notification and default template settings
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -574,7 +574,7 @@ Send a quicksend video email to the list or users provided.
 ### Example
 ```javascript
 var Bombbomb = require('bombbomb');
-var defaultClient = Bombbomb.ApiClient.default;
+var defaultClient = Bombbomb.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: BBOAuth2
 var BBOAuth2 = defaultClient.authentications['BBOAuth2'];
@@ -588,7 +588,7 @@ var opts = {
   'subject': "subject_example", // String | Subject line for the email.
   'message': "message_example", // String | Message for the body of the email.
   'listIds': "listIds_example", // String | An array of list ids
-  'scheduledSendTimestamp': 56, // Integer | When to schedule the send (seconds since epoch). null value means send immediately.
+  'scheduledSendTimestamp': 56, // Number | When to schedule the send (seconds since epoch). null value means send immediately.
   'extendedProperties': "extendedProperties_example", // String | Bool value that when checked will send back both emailId as well as extra properties
   'templateId': "templateId_example", // String | Id of a template to use for this send. A null value means use the default for this user.
   'stripHTML': "stripHTML_example" // String | remove HTML elements
@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
  **subject** | **String**| Subject line for the email. | [optional] 
  **message** | **String**| Message for the body of the email. | [optional] 
  **listIds** | **String**| An array of list ids | [optional] 
- **scheduledSendTimestamp** | **Integer**| When to schedule the send (seconds since epoch). null value means send immediately. | [optional] 
+ **scheduledSendTimestamp** | **Number**| When to schedule the send (seconds since epoch). null value means send immediately. | [optional] 
  **extendedProperties** | **String**| Bool value that when checked will send back both emailId as well as extra properties | [optional] 
  **templateId** | **String**| Id of a template to use for this send. A null value means use the default for this user. | [optional] 
  **stripHTML** | **String**| remove HTML elements | [optional] 

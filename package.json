@@ -1,14 +1,17 @@
 {
   "name": "bombbomb",
-  "version": "2.0.0",
+  "version": "2.0.831",
   "description": "We_make_it_easy_to_build_relationships_using_simple_videos_",
-  "license": "Apache-2.0",
+  "license": "Unlicense",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --recursive"
   },
+  "browser": {
+    "fs": false
+  },
   "dependencies": {
-    "superagent": "1.7.1"
+    "superagent": "3.5.2"
   },
   "devDependencies": {
     "mocha": "~2.3.4",

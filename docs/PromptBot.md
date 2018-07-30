@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **listId** | **String** | The list to attach the Prompt Bot to. | [optional] 
 **name** | **String** | The name of the bot. | [optional] 
 **contactFieldValueColumn** | **String** | The custom contact field value column used for this bot. | [optional] 
-**status** | **Integer** | The status of the prompt bot. Read Only. | [optional] 
+**status** | **Number** | The status of the prompt bot. Read Only. | [optional] 
 **startDate** | **Date** | when the bot started | [optional] 
 **endDate** | **Date** | when the bot should finish | [optional] 
 **botTypeId** | **String** | The type of bot. | [optional] 

@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **scheduledSendDate** | **Date** | When the final email is scheduled to be sent | [optional] 
 **clientGroupId** | **String** | The client group campaign that created the prompt. | [optional] 
 **thumbnailUrl** | **String** | The URL of a thumbnail image for this prompt | [optional] 
-**status** | **Integer** | The status of the prompt: created &#x3D; 0, sent &#x3D; 10, recorded &#x3D; 20, job_created &#x3D; 30, timed_out &#x3D; 40, declined &#x3D; 50 Read Only | [optional] 
+**status** | **Number** | The status of the prompt: created &#x3D; 0, sent &#x3D; 10, recorded &#x3D; 20, job_created &#x3D; 30, timed_out &#x3D; 40, declined &#x3D; 50 Read Only | [optional] 
 **createdDate** | **Date** | When the email was first sent out | [optional] 
 **lastNotified** | **Date** | When the user was last notified about a prompt email waiting for a video | [optional] 
 **sendMechanism** | **Date** | The sendMechanism property | [optional] 

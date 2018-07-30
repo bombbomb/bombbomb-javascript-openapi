@@ -33,7 +33,7 @@
   /**
    * Automations service.
    * @module api/AutomationsApi
-   * @version 2.0.831
+   * @version 2.0.25798
    */
 
   /**

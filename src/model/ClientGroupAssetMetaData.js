@@ -36,7 +36,7 @@
   /**
    * The ClientGroupAssetMetaData model module.
    * @module model/ClientGroupAssetMetaData
-   * @version 2.0.831
+   * @version 2.0.25798
    */
 
   /**

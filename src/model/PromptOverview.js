@@ -36,7 +36,7 @@
   /**
    * The PromptOverview model module.
    * @module model/PromptOverview
-   * @version 2.0.831
+   * @version 2.0.25798
    */
 
   /**

@@ -33,7 +33,7 @@
   /**
    * Files service.
    * @module api/FilesApi
-   * @version 2.0.831
+   * @version 2.0.25798
    */
 
   /**

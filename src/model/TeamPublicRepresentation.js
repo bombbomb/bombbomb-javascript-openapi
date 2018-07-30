@@ -36,7 +36,7 @@
   /**
    * The TeamPublicRepresentation model module.
    * @module model/TeamPublicRepresentation
-   * @version 2.0.831
+   * @version 2.0.25798
    */
 
   /**

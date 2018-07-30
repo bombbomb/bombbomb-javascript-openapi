@@ -33,7 +33,7 @@
   /**
    * Teams service.
    * @module api/TeamsApi
-   * @version 2.0.831
+   * @version 2.0.25798
    */
 
   /**
